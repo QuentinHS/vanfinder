@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  postcode: 1
+  sold: false
+  description: MyText
+  user: one
+  price: 9.99
+
+two:
+  postcode: 1
+  sold: false
+  description: MyText
+  user: two
+  price: 9.99
