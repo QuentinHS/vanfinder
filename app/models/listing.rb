@@ -1,7 +1,7 @@
 class Listing < ApplicationRecord
   belongs_to :user
 
-  has_one_attached :listing_image
+  has_one_attached :listing_image, dependent: :destroy
 
   # validates :listing_image, attached: true, content_type: %i[png jpg jpeg]
   validates :price, presence: { message: "Please provide a price"}
