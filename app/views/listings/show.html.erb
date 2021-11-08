@@ -1,5 +1,12 @@
 <p id="notice"><%= notice %></p>
 
+<% if @listing.listing_image.attached? %>
+   <p>
+      <%= image_tag @listing.listing_image, width: 150 %>
+  </p>
+
+<%= end %>
+
 <p>
   <strong>Postcode:</strong>
   <%= @listing.postcode %>

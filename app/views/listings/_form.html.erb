@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :listing_image %>
+    <%= form.file_field :listing_image %>
+  </div>
+
+  <div class="field">
     <%= form.label :postcode %>
     <%= form.number_field :postcode %>
   </div>
