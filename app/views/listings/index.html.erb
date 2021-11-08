@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<% content_for :primary_content do %>
 
 <h1>Listings</h1>
 
@@ -32,7 +32,12 @@
     <% end %>
   </tbody>
 </table>
+<% end %>
 
 <br>
 
-<%= link_to 'New Listing', new_listing_path %>
+<% content_for :secondary_content do %>
+  <%= link_to 'New Listing', new_listing_path %>
+<% end %>
+
+<%= render "shared/basic_layout" %>

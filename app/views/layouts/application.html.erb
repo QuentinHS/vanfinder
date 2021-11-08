@@ -8,6 +8,7 @@
 
     <main class="px-4 lg:px-10">
       <%= content_for?(:content) ? yield(:content) : yield %>
+      <div class="js-notice dynamic-notice fadeInUp animated"></div>
     </main>
   </body>
 </html>
