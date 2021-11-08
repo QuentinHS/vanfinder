@@ -1,5 +1,5 @@
 <header class="mb-4">
-  <nav class="flex flex-wrap items-center justify-between px-3 py-3 text-gray-700 bg-gray-100 lg:px-10">
+  <nav class="flex flex-wrap items-center justify-between px-3 py-3 text-gray-100 bg-blue-700 lg:px-10">
     <div class="flex items-center mr-6 flex-no-shrink">
       <%= link_to "Home", root_path, class:"link text-xl tracking-tight font-black" %>
     </div>
@@ -10,8 +10,17 @@
     </div>
     <div class="items-center block w-full text-center lg:flex-1 lg:flex lg:text-left">
       <div class="lg:flex-grow">
-        <%= link_to "Basic Link", "#", class: "block mt-4 lg:inline-block lg:mt-0 lg:mr-4 mb-2 lg:mb-0 link" %>
+        <%= link_to "All Listings", "#", class: "block mt-4 lg:inline-block lg:mt-0 lg:mr-4 mb-2 lg:mb-0 link" %>
       </div>
+          <div class="w-full lg:w-1/2 px-0 md:px-2">
+            <div class="relative">
+            <input class="input pl-10" id="search" type="text" placeholder="Search Listings">
+            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-3 text-gray-700">
+              <svg class ="fill-current h-4 w-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>search</title><path d="M22.414 19.586l-4.801-4.801A8.942 8.942 0 0 0 19 10a9 9 0 1 0-9 9 8.942 8.942 0 0 0 4.785-1.387l4.801 4.801c.39.391.902.586 1.414.586s1.024-.195 1.414-.586a2 2 0 0 0 0-2.828zM10 15c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z" /></svg>
+            </div>
+            </div>
+          </div>
+        </div>
       <div class="items-center block w-full mt-2 text-center lg:flex lg:flex-row lg:flex-1 lg:mt-0 lg:text-left lg:justify-end">
         <% if user_signed_in? %>
           <%= link_to "Edit account", edit_user_registration_path, class: "btn btn-default mb-2 lg:mr-2 lg:mb-0 block" %>
