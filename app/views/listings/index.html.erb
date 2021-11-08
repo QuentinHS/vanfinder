@@ -19,7 +19,7 @@
     <% @listings.each do |listing| %>
       <tr>
         
-        <td><%= image_tag listing.listing_image, width: 50 if listing.listing_image.attached? %></td>
+        <td><%= cl_image_tag listing.listing_image.key, crop: :scale,width: 50, cloud_name: ENV['CLOUDINARY_CLOUD_NAME']  if listing.listing_image.attached? %></td>
         <td><%= listing.postcode %></td>
         <td><%= listing.sold %></td>
         <td><%= listing.description %></td>
