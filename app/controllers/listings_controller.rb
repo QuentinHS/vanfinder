@@ -1,5 +1,7 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: %i[ show edit update destroy ]
+  # This throws an exception if the user is not authenticated
+  before_action :authenticate_user!, except: %i[ index show ]
 
   # GET /listings or /listings.json
   def index
