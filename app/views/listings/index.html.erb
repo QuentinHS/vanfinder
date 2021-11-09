@@ -36,8 +36,12 @@
 
 <br>
 
-<% content_for :secondary_content do %>
-  <%= link_to 'New Listing', new_listing_path %>
+<% if user_signed_in? %>
+
+  <% content_for :secondary_content do %>
+    <%= link_to 'New Listing', new_listing_path %>
+  <% end %>
+  
 <% end %>
 
 <%= render "shared/basic_layout" %>
