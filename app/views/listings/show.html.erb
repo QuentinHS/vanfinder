@@ -5,7 +5,6 @@
       <%= image_tag @listing.listing_image, width: 150 
        %>
   </p>
-
 <%= end %>
 
 <p>
@@ -17,6 +16,11 @@
   <strong>Sold:</strong>
   <%= @listing.sold %>
 </p>
+
+<!-- <p>
+  <strong>Genres:</strong> <%= @listings.amenities.map { |a| a.name }.join(", ") %>
+</p> -->
+
 
 <p>
   <strong>Description:</strong>
