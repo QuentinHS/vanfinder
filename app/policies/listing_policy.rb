@@ -17,15 +17,17 @@ class ListingPolicy
   end
 
   def create?
-    false
+    true
   end
 
   def new?
     create?
   end
 
+  # user.has_any_role?(:admin, :creator)
+  
   def update?
-    false
+    user.has_any_role?(:admin, :creator)
   end
 
   def edit?
@@ -33,7 +35,7 @@ class ListingPolicy
   end
 
   def destroy?
-    false
+    user.has_any_role?(:admin)
   end
 
   class Scope

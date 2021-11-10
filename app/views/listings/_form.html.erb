@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :listing_image %>
-    <%= form.file_field :listing_image %>
+    <%= form.file_field :listing_image, multiple: false, accept:'image/*' %>
   </div>
 
   <div class="field">
