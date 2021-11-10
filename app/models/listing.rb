@@ -1,6 +1,6 @@
 class Listing < ApplicationRecord
+  resourcify
   belongs_to :user
-
   has_one_attached :listing_image, dependent: :purge
 
   # validates :listing_image, attached: true, content_type: %i[png jpg jpeg]
