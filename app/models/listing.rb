@@ -2,8 +2,9 @@ class Listing < ApplicationRecord
   resourcify
   belongs_to :user
   has_one_attached :listing_image, dependent: :purge
+  # belongs_to :creator, -> { where(roles: {name: :creator}) }, through: :roles, class_name: 'User', source: :users
 
-  after_create :add_editor_role
+  # after_create :add_editor_role
 
 
   # validates :listing_image, attached: true, content_type: %i[png jpg jpeg]
@@ -14,8 +15,8 @@ class Listing < ApplicationRecord
 
   private
 
-  def add_editor_role
-    self.user.add_role :editor, @listing
-  end 
+  # def add_editor_role
+  #   self.user.add_role :editor, @listing
+  # end 
 
 end

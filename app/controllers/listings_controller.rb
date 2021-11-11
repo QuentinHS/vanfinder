@@ -28,6 +28,7 @@ class ListingsController < ApplicationController
 
     respond_to do |format|
       if @listing.save
+        current_user.add_role :creator, @listing
         format.html { redirect_to @listing, notice: "Listing was successfully created." }
         format.json { render :show, status: :created, location: @listing }
       else
