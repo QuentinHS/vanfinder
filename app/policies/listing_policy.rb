@@ -27,7 +27,7 @@ class ListingPolicy
   # user.has_any_role?(:admin, :creator)
   
   def update?
-    user.has_any_role?(:admin, :creator)
+    user.has_any_role?(:admin)
   end
 
   def edit?

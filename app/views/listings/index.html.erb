@@ -36,7 +36,7 @@
 
 <br>
 
-<% if user_signed_in? %>
+<% if policy(Listing).new? %>
 
   <% content_for :secondary_content do %>
     <%= link_to 'New Listing', new_listing_path %>
