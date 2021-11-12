@@ -1,36 +1,17 @@
 <nav class="js-nav flex items-center justify-between flex-wrap bg-blue-500 py-4 lg:px-12 shadow border-solid border-t-2 border-blue-700">
         <div class="flex justify-between lg:w-auto w-full lg:border-b-0 pl-6 pr-2 border-solid border-b-2 border-gray-300 pb-5 lg:pb-0">
-            <div class="flex items-center flex-shrink-0 text-gray-800 mr-16">
-                <%= link_to "VanFinder", root_path, class:"link text-lg tracking-wider font-semibold uppercase" %>
+            <div class="flex items-center flex-shrink-0 text-gray-800 mr-16 justify-around">
+                <%= link_to "VanFinder", root_path, class:"block link text-lg pt-3 lg:pt-0 tracking-wider font-semibold uppercase" %>
+								  <%= link_to "Create Listing", new_listing_path, class: "block btn btn-lg btn-purple mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700  " %>
             </div>
-            <div class="block lg:hidden flex items center">
-              <button class="outline-none mobile-menu-button">
-									<svg class=" w-8 h-8 text-gray-500 hover:text-purple-600 "
-										x-show="!showMenu"
-										fill="none"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-									>
-										<path d="M4 6h16M4 12h16M4 18h16"></path>
-									</svg>
-						</button>
-            </div>
+ 
         </div>
     
         <div class="menu w-full lg:block flex-grow lg:flex lg:items-center lg:w-auto lg:px-3 px-8 mt-5 lg:mt-0">
-            <div class="text-md font-bold text-blue-700 lg:flex-grow hidden lg:block">
-             
-                <%= link_to "New Listing", new_listing_path, class: "block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2" %>
-                 <%= link_to "All Listings", listings_path, class: "block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2" %>
+            <div class="text-md font-bold text-blue-700 lg:flex-grow "> 
+              
+                 <%= link_to "All Listings", listings_path, class: "block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2 hidden lg:block" %>
             </div>
-
-					<div class="hidden mobile-menu">
-						  <%= link_to "New Listing", new_listing_path, class: "block text-sm px-2 py-4 hover:bg-blue-700 transition duration-300" %>
-              <%= link_to "All Listings", listings_path, class: "block text-sm px-2 py-4 hover:bg-blue-700 transition duration-30" %>
-					</div>
 
             <!-- Search Bar -->
             <div class="relative mx-auto text-gray-600 lg:block hidden">
@@ -96,11 +77,3 @@
 </nav>
 
 
-	<script>
-		const btn = document.querySelector("button.mobile-menu-button");
-		const menu = document.querySelector(".mobile-menu");
-
-		btn.addEventListener("click", () => {
-			menu.classList.toggle("hidden");
-		});
-	</script>
