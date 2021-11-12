@@ -1,9 +1,9 @@
 <%= form_with(model: listing) do |form| %>
   <% if listing.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation  class="border-red-400 p-4 rounded border bg-red-100 mb-6"">
+    <div id="error_explanation" >
       <h2><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
-
-      <ul>
+      <ul class="text-sm mt-2 text-red-500 pl-4">
         <% listing.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -11,40 +11,42 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :listing_image %>
-    <%= form.file_field :listing_image, multiple: false, accept:'image/*' %>
+  <div class="image_video">
+    <div class="my-6">
+      <%= form.label :listing_image, class: "label" %>
+      <label class="btn btn-white btn-small inline-flex items-center">
+        <%= render_svg "icons/image", styles: "fill-current text-gray-600 mr-2" %> Upload Image
+         <%= form.file_field :listing_image, multiple: false, accept:'image/*' %>
+      </label>
+    </div>
+
+
+  <div class="mb-6">
+    <%= form.label :city, class: "label" %>
+    <%= form.number_field :city, class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :postcode %>
-    <%= form.number_field :postcode %>
+  <div class="mb-6">
+    <%= form.label :state, class: "label" %>
+    <%= form.number_field :state, class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :sold %>
-    <%= form.check_box :sold %>
+  <div class="mb-6 text">
+    <%= form.label :description, class: "label" %>
+    <%= form.text_area :description, class: "input" %>
+  </div>
+  
+  <div class="mb-6">
+    <%= form.label :price, class: "label" %>
+    <%= form.number_field :price, class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
-  </div>
+ 
 
 
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="mb-6">
+    <%= form.submit class: "btn btn-purple" %>
   </div>
 
 
