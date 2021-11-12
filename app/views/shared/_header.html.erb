@@ -1,22 +1,18 @@
 <header class="mb-4">
-     <nav role="navigation" arial-label="main navigation" class="js-nav flex flex-wrap items-center justify-between px-3 py-3 text-gray-100 lg:px-10 bg-blue-500">
+     <nav role="navigation" arial-label="main navigation" class="js-nav flex flex-wrap items-center justify-between px-3 py-3 text-gray-700 lg:px-10 bg-blue-500">
         <div class="flex items-center mr-6 flex-no-shrink">
           <%= link_to "VanFinder", root_path, class:"link text-lg tracking-wider font-semibold uppercase" %>
         </div>
-     <div class="block lg:hidden">
-          <button class="flex items-center px-3 py-2 text-white border border-gray-500 rounded hover:text-gray-200 hover:border-gray-200">
-            <svg class="w-3 h-3 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
-          </button>
-    </div>
+
     <!-- Change policy so only shows if user has new policy -->
-    <div class="items-center block w-full text-center lg:flex-1 lg:flex lg:text-left">
+    <div class="items-center block w-full text-center flex-1 lg:flex lg:text-left">
           <div class="lg:flex-grow">
             <%= link_to "New Listing", new_listing_path, class: "btn btn-white mb-2 lg:mb-0 xs:mb-10" %>
           </div> 
     </div>
 
     <!-- Should show at all times -->
-    <div class="items-center block w-full text-center lg:flex-1 lg:flex lg:text-left">
+    <div class="items-center block w-full text-center flex-1 lg:flex lg:text-left">
           <div class="lg:flex-grow">
             <%= link_to "All Listings", listings_path, class: "btn btn-white mb-2 lg:mb-0" %>
           </div>
