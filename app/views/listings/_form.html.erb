@@ -13,10 +13,10 @@
 
   <div class="image_video">
     <div class="my-6">
-      <%= form.label :listing_image, class: "label" %>
+      <%= form.label :van_image, class: "label " %>
       <label class="btn btn-white btn-small inline-flex items-center">
         <%= render_svg "icons/image", styles: "fill-current text-gray-600 mr-2" %> Upload Image
-         <%= form.file_field :listing_image, multiple: false, accept:'image/*' %>
+         <%= form.file_field :listing_image, multiple: false, accept:'image/*', class: "hidden" %>
       </label>
     </div>
 
