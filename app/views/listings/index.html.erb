@@ -1,11 +1,11 @@
 <div class="min-h-screen bg-yellow-400 flex justify-center items-center py-20">
   <div class="container mx-auto p-12 bg-gray-100 rounded-xl ">
     <h1 class="text-4xl uppercase font-bold from-current mb-8">Listings</h1>
-    <div class="bg-green-400">
+    <div class="flex flex-wrap -mx-4">
   <% @listings.each do |listing| %> 
     
     <!-- Box-1 -->
-    <div class="sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-3 space-y-4 sm:space-y-0">
+    <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4 gap-4 mb-3 space-y-4 sm:space-y-0">
       <div class="bg-white">
         <div>
           <div class="shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105">
