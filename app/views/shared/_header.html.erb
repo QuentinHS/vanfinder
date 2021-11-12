@@ -48,11 +48,13 @@
           </div>
 
           <% if user_signed_in? %>
-            <div class="dropdown rounded bg-white border border-gray-400 text-gray-600 ml-1 hover:bg-gray-200">
-              <div class="dropdown-content pt-2 pb-2 pl-3 pr-1">
-                <%= link_to "#", class: "js-dropdown-user-target no-underline flex justify-between text-gray-700 uppercase text-xs tracking-wide items-center font-semibold" do %>         
+            <div class="dropdown rounded bg-white border border-gray-400 text-gray-600 ml-1 hover:bg-gray-200 z-50 relative">
+              <div class="dropdown-content pt-2 pb-2 pl-3 pr-1 ">
+                <%= link_to "#", class: "js-dropdown-user-target no-underline flex justify-between text-gray-700 uppercase text-xs tracking-wide items-center font-semibold pt-2 pb-2 pl-3 pr-1" do %>    
+                   <%= current_user.username if current_user.username %>
+                  <%= render_svg "icons/chevron-down" %>     
                 <% end %>
-                  <ul class="list-reset dropdown-list absolute pin-l rounded-b border border-gray-500 shadow">
+                  <ul class="list-reset absolute dropdown-list absolute pin-l rounded-b border border-gray-500 shadow list-none hidden">
                     <h5 class="mt-2 uppercase text-xs text-gray-500 font-normal py-2 pl-3 tracking-wide">My Stuff</h5>
 
                     <li>
