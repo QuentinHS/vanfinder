@@ -1,10 +1,9 @@
 document.addEventListener("turbolinks:load", () => {
   const element = document.getElementById("nav-tab");
   const text = document.querySelector(".text");
-  const imageVideo = document.querySelector(".image_video");
   const url = document.querySelector(".url");
   // user profile
-  const submissions = document.getElementById("profile_submissions");
+  const submissions = document.getElementById("profile_listings");
   const comments = document.getElementById("profile_comments");
 
   if (imageVideo != null || url != null) {

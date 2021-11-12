@@ -1,5 +1,5 @@
 .input {
-  @apply appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight;
+  @apply appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-none;
 }
 
 .input:focus {
@@ -7,13 +7,12 @@
 }
 
 .label {
-  @apply block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2;
+  @apply block uppercase tracking-wider text-gray-700 text-xs font-bold mb-2;
 }
 
 .select {
-  @apply appearance-none py-3 px-4 pr-8 block w-full bg-gray-200 border border-gray-200 text-gray-700
-   rounded leading-tight;
-   -webkit-appearance: none;
+  @apply appearance-none py-3 px-4 pr-8 block w-full bg-gray-200 border border-gray-200 text-gray-700 rounded leading-none;
+  -webkit-appearance: none;
 }
 
 .select:focus {

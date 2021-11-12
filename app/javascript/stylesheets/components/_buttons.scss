@@ -1,5 +1,3 @@
-/* Buttons */
-
 .btn {
   @apply font-semibold text-lg py-3 px-6 rounded cursor-pointer no-underline;
 }
@@ -17,18 +15,17 @@
 }
 
 .btn-green {
-  @apply bg-green-500 text-white;
+  @apply bg-green-600 text-white;
 }
 
 .btn-green:hover {
-  @apply bg-green-600;
+  @apply bg-green-700;
 }
 
 .btn-purple:active,
 .btn-green:active {
   @apply text-white;
 }
-
 
 .btn-outline {
   @apply text-gray-800 border border-gray-400;
@@ -47,7 +44,7 @@
 }
 
 .link {
-  @apply no-underline text-gray-100;
+  @apply no-underline;
 }
 
 .link-grey {
@@ -59,7 +56,7 @@
 }
 
 .link-purple {
- @apply text-purple-600;
+  @apply text-purple-600;
 }
 
 .link-purple:hover {
