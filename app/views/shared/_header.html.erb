@@ -1,5 +1,5 @@
 <header class="mb-4">
-     <nav class="flex flex-wrap items-center justify-between px-3 py-3 text-gray-100 lg:px-10 bg-blue-500">
+     <nav role="navigation" arial-label="main navigation" class="js-nav flex flex-wrap items-center justify-between px-3 py-3 text-gray-100 lg:px-10 bg-blue-500">
         <div class="flex items-center mr-6 flex-no-shrink">
           <%= link_to "VanFinder", root_path, class:"link text-lg tracking-wider font-semibold uppercase" %>
         </div>
@@ -48,13 +48,13 @@
           </div>
 
           <% if user_signed_in? %>
-            <div class="dropdown rounded bg-white border border-gray-400 text-gray-600 ml-1 hover:bg-gray-200 z-50 relative">
-              <div class="dropdown-content pt-2 pb-2 pl-3 pr-1 ">
-                <%= link_to "#", class: "js-dropdown-user-target no-underline flex justify-between text-gray-700 uppercase text-xs tracking-wide items-center font-semibold pt-2 pb-2 pl-3 pr-1" do %>    
-                   <%= current_user.username if current_user.username %>
-                  <%= render_svg "icons/chevron-down" %>     
+            <div class="dropdown rounded bg-white text-gray-700 ml-1 hover:bg-gray-200">
+             
+                <%= link_to "#", class: "dropdown-target rounded border no-underline flex justify-between text-gray-700 uppercase tracking-wide text-xs font-semibold items-center pt-2 pb-2 pl-3 pr-1", role: "button" do %>
+                  <%= current_user.username if current_user.username %>
+                  <%= render_svg 'icons/chevron-down' %>
                 <% end %>
-                  <ul class="list-reset absolute dropdown-list absolute pin-l rounded-b border border-gray-500 shadow list-none hidden">
+                  <ul class="dropdown-menu hidden shadow-lg leading-normal list-reset rounded-b border-t">
                     <h5 class="mt-2 uppercase text-xs text-gray-500 font-normal py-2 pl-3 tracking-wide">My Stuff</h5>
 
                     <li>
@@ -75,9 +75,10 @@
                       <% end %>
                     </li>
 
+
                   </ul>
                 </div>
-              </div>
+             
             <% end %>
           </div>
         </div>
