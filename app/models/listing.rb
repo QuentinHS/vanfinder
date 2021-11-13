@@ -7,7 +7,7 @@ class Listing < ApplicationRecord
   # after_create :add_editor_role
 
 
-  validates :listing_image, attached: true, content_type: %i[png jpg jpeg], presence: { message: "Please provide an image of your van"}
+  validates :listing_image, presence: { message: "Please provide an image of your van"}
   validates :price, presence: { message: "Please provide a price"}
   validates :description, presence: { message: "Please add a description"}
   validates :description, length: {minimum:10, maximum:500}
