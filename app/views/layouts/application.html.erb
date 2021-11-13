@@ -11,6 +11,7 @@
       <%= content_for?(:content) ? yield(:content) : yield %>
       <div class="js-notice dynamic-notice fadeInUp animated"></div>
     </main>
+    <%= render "shared/testimonial" %>
     <%= render "shared/footer" %>
   </body>
 </html>
