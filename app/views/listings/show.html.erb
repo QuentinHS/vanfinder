@@ -93,7 +93,16 @@
                         
                         </ul>
                     </div>
-                    <button class="revealSeller bold text-2xl center btn btn-outline bg-purple-700 text-blue-200 mb-3">Contact Seller</button>
+                    <%= link_to '<< Back to listings', listings_path, class: "text-gray-200 inline-block center btn btn-outline my-4" %>
+                    <div class="flex items-center justify-between">
+                        <div class="mt-2">
+                            <button class="revealSeller bold text-xl px-9 center btn btn-outline bg-purple-700 text-blue-200 mb-3">Contact Seller</button>
+                        </div>
+                        <div>
+                        <%= link_to 'Edit', edit_listing_path(@listing),  class: "bold text-xl center btn btn-outline bg-purple-700 text-blue-200" %>
+                        <%= link_to 'Delete', @listing, method: :delete, data: { confirm: "Are you sure that you want to delete this listing? "}, class: "bold text-xl center btn btn-outline bg-purple-700 text-blue-200" %> 
+                        </div>
+                    </div>
                     <div class="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100 hidden sellerInfo">
                         <div class="text-xs uppercase font-bold text-gray-600 tracking-wide">Seller</div>
                         <div class="flex items-center pt-2">
@@ -120,6 +129,8 @@
   <%= link_to 'Delete', @listing, method: :delete, data: { confirm: "Are you sure that you want to delete this listing? "} %> |
 <% end %>
 <%= link_to '<< Back to listings', listings_path %>
+
+
 
 <script>
   let button = document.querySelector(".revealSeller")
