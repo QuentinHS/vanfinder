@@ -4,7 +4,9 @@ class ListingsController < ApplicationController
   before_action :authenticate_user!, except: %i[ index show ]
   # Use pundit to check for authorisation
   before_action :check_auth
-  before_action :set_vans_and_amenities, only: [:new, :edit, :create]
+
+  skip_before_action :verify_authenticity_token
+ 
   
   # GET /listings or /listings.json
   def index
@@ -17,7 +19,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/new
   def new
-    @listing = Listing.new
+    @listing = current_user.listings.build
   end
 
   # GET /listings/1/edit
@@ -26,7 +28,7 @@ class ListingsController < ApplicationController
 
   # POST /listings or /listings.json
   def create
-    @listing = Listing.new(listing_params)
+    @listing = current_user.listings.build(listing_params)
 
     respond_to do |format|
       if @listing.save
@@ -77,10 +79,7 @@ class ListingsController < ApplicationController
       params.require(:van).permit(:make, :model, :type, :roof_type, :year, :odometer, :sleeps, :fuel_type, :seats, :listing_id, :amenity_ids)
     end
 
-    def set_vans_and_amenities
-      @vans = Van.order(:make)
-      @amenities = Amenity.order(:name)
-    end
+
 
     # Call pundit to authorise listing
 

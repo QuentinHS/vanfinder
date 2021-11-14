@@ -6,7 +6,8 @@ class ApplicationController < ActionController::Base
   # Create van ammenities classes
   # Link profile to user listings
   # Add search functionality
-  # 
+  
+  before_action :set_vans_and_amenities, only: [:new, :edit, :create]
 
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -20,7 +21,7 @@ class ApplicationController < ActionController::Base
   protected
 
     def configure_permitted_parameters
-      added_attrs = [:username]
+      added_attrs = [:username, :phone_number, :first_name, :last_name]
       devise_parameter_sanitizer.permit(:sign_up, keys: added_attrs)
       devise_parameter_sanitizer.permit(:account_update, keys: added_attrs)
     end
@@ -30,6 +31,11 @@ class ApplicationController < ActionController::Base
   def forbidden
       flash[:alert] = "You are not authorised to perform that action!"
       redirect_to(request.referrer || root_path)
+  end
+
+  def set_vans_and_amenities
+    @vans = Van.order(:make)
+    @amenities = Amenity.order(:name)
   end
 
 end
