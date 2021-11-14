@@ -4,6 +4,8 @@ class ListingsController < ApplicationController
   before_action :authenticate_user!, except: %i[ index show ]
   # Use pundit to check for authorisation
   before_action :check_auth
+  before_action :set_vans_and_amenities, only: [:new, :edit, :create]
+  
   # GET /listings or /listings.json
   def index
     @listings = Listing.all
@@ -68,7 +70,16 @@ class ListingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def listing_params
-      params.require(:listing).permit(:postcode, :sold, :description, :user_id, :price, :listing_image)
+      params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image)
+    end
+
+    def van_params
+      params.require(:van).permit(:make, :model, :type, :roof_type, :year, :odometer, :sleeps, :fuel_type, :seats, :listing_id, :amenity_ids)
+    end
+
+    def set_vans_and_amenities
+      @vans = Van.order(:make)
+      @amenities = Amenity.order(:name)
     end
 
     # Call pundit to authorise listing
