@@ -1,6 +1,7 @@
 class Listing < ApplicationRecord
   resourcify
   belongs_to :user
+  has_one :van
   has_one_attached :listing_image, dependent: :purge
   # belongs_to :creator, -> { where(roles: {name: :creator}) }, through: :roles, class_name: 'User', source: :users
 
