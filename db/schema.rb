@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_14_123649) do
+ActiveRecord::Schema.define(version: 2021_11_14_123918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,15 @@ ActiveRecord::Schema.define(version: 2021_11_14_123649) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "amenity_vans", force: :cascade do |t|
+    t.bigint "van_id", null: false
+    t.bigint "amenity_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["amenity_id"], name: "index_amenity_vans_on_amenity_id"
+    t.index ["van_id"], name: "index_amenity_vans_on_van_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -133,6 +142,8 @@ ActiveRecord::Schema.define(version: 2021_11_14_123649) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "amenity_vans", "amenities"
+  add_foreign_key "amenity_vans", "vans"
   add_foreign_key "listings", "users"
   add_foreign_key "vans", "listings"
 end
