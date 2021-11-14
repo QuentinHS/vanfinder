@@ -4,7 +4,7 @@ class ListingsController < ApplicationController
   before_action :authenticate_user!, except: %i[ index show ]
   # Use pundit to check for authorisation
   before_action :check_auth
-
+  
   skip_before_action :verify_authenticity_token
  
   
@@ -29,10 +29,9 @@ class ListingsController < ApplicationController
   # POST /listings or /listings.json
   def create
     @listing = current_user.listings.build(listing_params)
-
     respond_to do |format|
       if @listing.save
-        current_user.add_role :editor, @listing
+        
         format.html { redirect_to @listing, notice: "Listing was successfully created." }
         format.json { render :show, status: :created, location: @listing }
       else
@@ -64,6 +63,7 @@ class ListingsController < ApplicationController
     end
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
@@ -79,12 +79,11 @@ class ListingsController < ApplicationController
       params.require(:van).permit(:make, :model, :type, :roof_type, :year, :odometer, :sleeps, :fuel_type, :seats, :listing_id, :amenity_ids)
     end
 
-
-
     # Call pundit to authorise listing
 
-    def check_auth
-      authorize Listing
-    end
+  def check_auth
+    authorize Listing
+  end
+
 
 end

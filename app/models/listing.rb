@@ -4,8 +4,8 @@ class Listing < ApplicationRecord
   has_one :van
   has_one_attached :listing_image, dependent: :purge
   # belongs_to :creator, -> { where(roles: {name: :creator}) }, through: :roles, class_name: 'User', source: :users
-
   # after_create :add_editor_role
+
 
 
   validates :listing_image, presence: { message: "Please provide an image of your van"}
@@ -19,7 +19,7 @@ class Listing < ApplicationRecord
   private
 
   # def add_editor_role
-  #   self.user.add_role :editor, @listing
+  #   @current_user.add_role :editor, @listing
   # end 
 
 end
