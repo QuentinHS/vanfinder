@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class ListingPolicy
-  attr_reader :user, :record
+  attr_reader :user, :listing
 
-  def initialize(user, record)
+  def initialize(user, listing)
     @user = user
-    @record = record
+    @listing = listing
+  
   end
 
   def index?
@@ -25,7 +26,7 @@ class ListingPolicy
   end
   
   def update?
-    user.has_any_role?(:admin, :creator)
+    user.has_role? :creator, @listing
   end
 
   def edit?

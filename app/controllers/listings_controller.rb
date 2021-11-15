@@ -27,6 +27,7 @@ class ListingsController < ApplicationController
   # POST /listings or /listings.json
   def create
     @listing = current_user.listings.build(listing_params)
+   
     respond_to do |format|
       if @listing.save
         current_user.add_role :creator, @listing
