@@ -11,7 +11,7 @@ class ListingsController < ApplicationController
   # GET /listings/1 or /listings/1.json
   def show
     # Pundit authorisation for show view
-     authorize Listing
+     authorize @listing
   end
 
   # GET /listings/new
@@ -77,7 +77,5 @@ class ListingsController < ApplicationController
     def van_params
       params.require(:van).permit(:make, :model, :type, :roof_type, :year, :odometer, :sleeps, :fuel_type, :seats, :listing_id, :amenity_ids)
     end
-
-
 
 end
