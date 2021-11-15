@@ -47,9 +47,9 @@
     <%= builder.label :make, class: "label" %>
     <%= builder.text_field :make, class: "input" %>
   </div>
-    <%= builder.fields_for :amenities, Amenity.new do |a| %>
+    <%= builder.fields_for :amenities do |a| %>
         <%= a.label :amenities, class: "label" %>
-
+        <%= a.collection_check_boxes :amenity_ids, @amenities, :id, :name %>
     <% end %>
   <% end %>
   

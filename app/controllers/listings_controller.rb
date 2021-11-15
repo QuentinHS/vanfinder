@@ -16,7 +16,6 @@ class ListingsController < ApplicationController
 
   # GET /listings/new
   def new
-    # @listing = current_user.listings.build
     @listing = Listing.new
 
   end
@@ -72,7 +71,7 @@ class ListingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def listing_params
-      params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :model, :year, :odometer, :fuel_type, :type, :roof_type, :sleeps, :seats, amenities_attributes: [:shower]] )
+      params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :model, :year, :odometer, :fuel_type, :type, :roof_type, :sleeps, :seats, amenities_attributes: [id: [], name: [] ]] )
     end
 
 
