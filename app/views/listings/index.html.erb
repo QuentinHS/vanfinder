@@ -13,7 +13,7 @@
             <div>
               <%= cl_image_tag listing.listing_image.key, crop: :scale, cloud_name: ENV['CLOUDINARY_CLOUD_NAME']  if listing.listing_image.attached? %>
               <div class="px-4 py-2">
-                <h1 class="text-xl font-gray-700 font-bold">Papież gigant</h1>
+                <h1 class="text-xl font-gray-700 font-bold">$<%= listing.price %>0</h1>
                 <div class="flex space-x-2 mt-2">
                   <span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -21,9 +21,9 @@
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                   </span>
-                  <h3 class="text-lg text-gray-600 font-semibold mb-2">New York</h3>
+                  <h3 class="text-lg text-gray-600 font-semibold mb-2"><%= listing.city %>, <%= listing.state %></h3>
                 </div>
-                <p class="text-sm tracking-normal">Częstochowski pomnik Jana Pawła II wyjątkowo interesująco wpisuje się w poprzemysłowy krajobraz tego miasta o mocnych lewicowych, robotniczych i socjalistycznych tradycjach. Powstały w 2013 roku, uchodzi za najwyższego Karola Wojtyłę w Polsce.</p>
+                <p class="text-sm tracking-normal"><%= listing.description %></p>
                 <% if user_signed_in? %>
                   <%= link_to "Read more", listing, class: "block mt-12 w-full text-center bg-yellow-400 py-2 rounded-lg" %> 
                 <% end %>
