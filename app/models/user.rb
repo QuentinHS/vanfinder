@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  after_create :set_role, :add_editor
+  after_create :set_role
 
   rolify
 
@@ -19,11 +19,6 @@ class User < ApplicationRecord
   def set_role
     self.add_role :user if self.roles.blank?
   end
-
-  def add_editor
-    self.add_role :editor, Listing
-  end
-
 
 
 
