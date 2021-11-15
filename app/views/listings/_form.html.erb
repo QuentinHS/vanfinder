@@ -20,11 +20,7 @@
       </label>
     </div>
 
-  <div class="mb-6">
-    <%= form.label :make, class: "label" %>
-    <%= form.text_field :make, class: "input" %>
-  </div>
-  
+
 
   <div class="mb-6">
     <%= form.label :city, class: "label" %>
@@ -41,11 +37,19 @@
     <%= form.number_field :price, class: "input" %>
   </div>
 
-  <div class="mb-6">
-    <%= form.label :seats, class: "label" %>
-    <%= form.number_field :seats, class: "input" %>
-  </div>
+  <%= form.fields_for :van, Van.new do |builder| %>
 
+  <div class="mb-6">
+    <%= builder.label :seats, class: "label" %>
+    <%= builder.number_field :seats, class: "input" %>
+  </div>
+  <div class="mb-6">
+    <%= builder.label :make, class: "label" %>
+    <%= builder.text_field :make, class: "input" %>
+  </div>
+  
+  <% end %>
+  
   <div class="mb-6 text">
     <%= form.label :description, class: "label" %>
     <%= form.text_area :description, class: "input" %>
