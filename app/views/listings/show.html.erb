@@ -13,11 +13,18 @@
                         </div>
                     </div>
                     <div class="p-4 ">
-                       
-                        <p class="text-3xl text-gray-900">$750,000</p>
-                        <p class="text-gray-700">Brisbane, Queensland</p>
+        
+                        <p class="text-3xl text-gray-900"><%= number_to_currency(@listing.price, precision: 0) %></p>
+                        <div class="flex space-x-2 mt-2">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </span><p class="text-gray-700"><%= @listing.city %>, <%= @listing.state %></p>
+                        </div>
                          <p class="uppercase tracking-wide text-sm font-bold text-gray-700 mt-2 mb-1">Sellers Description</p>
-                         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo error, esse possimus minus quasi autem optio quis laborum beatae sed quam molestias iste laboriosam aperiam nisi asperiores ad deserunt ipsum eius veritatis temporibus. Deleniti, doloribus molestias reprehenderit quis animi, architecto iusto officia saepe porro impedit quia perspiciatis, excepturi nobis voluptatem.</p>
+                         <p><%= @listing.description %></p>
                     </div>
                     <div class="flex p-4 border-t border-gray-300 text-gray-700">
                         <div class="flex-1 inline-flex items-center">
