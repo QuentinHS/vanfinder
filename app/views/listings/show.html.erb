@@ -105,6 +105,7 @@
                         <div>
                             <%= link_to 'Contact Seller', profile_path, class: "bold text-xl px-9 center btn bg-purple-700 text-blue-200 mb-3" %> 
                         </div>
+                     <%= policy(@listing).update? %>   
                     <% if policy(@listing).update? %>
                         <div>
                         <%= link_to 'Edit', edit_listing_path(@listing),  class: "bold text-xl center btn btn-outline bg-purple-700 text-blue-200" %>
