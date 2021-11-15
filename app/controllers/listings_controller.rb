@@ -2,8 +2,7 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: %i[ show edit update destroy ]
   # This throws an exception if the user is not authenticated
   before_action :authenticate_user!, except: %i[ index show ]
-  # Use pundit to check for authorisation
-  before_action :check_auth
+
   
   
   # GET /listings or /listings.json
@@ -13,6 +12,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/1 or /listings/1.json
   def show
+    # Pundit authorisation for show view
      authorize Listing
   end
 
@@ -80,11 +80,6 @@ class ListingsController < ApplicationController
       params.require(:van).permit(:make, :model, :type, :roof_type, :year, :odometer, :sleeps, :fuel_type, :seats, :listing_id, :amenity_ids)
     end
 
-    # Call pundit to authorise listing
-
-  def check_auth
-    authorize Listing
-  end
 
 
 end
