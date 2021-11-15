@@ -5,7 +5,7 @@ class Listing < ApplicationRecord
   has_one_attached :listing_image, dependent: :purge
   accepts_nested_attributes_for :van, update_only: true
   
-
+ 
 
 
   validates :listing_image, presence: { message: "Please provide an image of your van"}

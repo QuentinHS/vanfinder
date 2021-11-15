@@ -7,7 +7,7 @@ class ListingsController < ApplicationController
 
   # GET /listings or /listings.json
   def index
-    @listings = Listing.all
+    @listings = Listing.order(created_at: :desc)
   end
 
   # GET /listings/1 or /listings/1.json
@@ -19,7 +19,8 @@ class ListingsController < ApplicationController
   # GET /listings/new
   def new
     @listing = Listing.new
-  
+    # @listing.build_van.amenities.build
+ 
   end
 
   # GET /listings/1/edit
@@ -73,7 +74,7 @@ class ListingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def listing_params
-      params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :model, :year, :odometer, :fuel_type, :type, :roof_type, :sleeps, :seats, amenity_ids: [], amenities_attributes: [:id, :name ]] )
+      params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :model, :year, :odometer, :fuel_type, :listing_id, :type, :roof_type, :sleeps, :seats, amenity_ids: [], amenities_attributes: [:id, :name ]] )
     end
 
     def set_vans_and_amenities
