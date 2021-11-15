@@ -1,9 +1,9 @@
 class Listing < ApplicationRecord
   resourcify
   belongs_to :user
-  has_one :van
+  has_one :van, dependent: :destroy
   has_one_attached :listing_image, dependent: :purge
-
+  accepts_nested_attributes_for :van, update_only: true
 
 
 
