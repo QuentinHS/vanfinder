@@ -13,7 +13,7 @@
             <div>
               <%= cl_image_tag listing.listing_image.key, crop: :scale, cloud_name: ENV['CLOUDINARY_CLOUD_NAME']  if listing.listing_image.attached? %>
               <div class="px-4 py-2">
-                <h1 class="text-xl font-gray-700 font-bold">$<%= listing.price %>0</h1>
+                <h1 class="text-xl font-gray-700 font-bold"><%= number_to_currency(listing.price, precision: 0) %></h1>
                 <div class="flex space-x-2 mt-2">
                   <span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
