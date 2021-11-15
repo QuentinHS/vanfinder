@@ -6,9 +6,7 @@ class ApplicationController < ActionController::Base
   # Create van ammenities classes
   # Link profile to user listings
   # Add search functionality
-  
-  # before_action :set_vans_and_amenities, only: [:new, :edit, :create]
-
+ 
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -33,9 +31,5 @@ class ApplicationController < ActionController::Base
       redirect_to(request.referrer || root_path)
   end
 
-  # def set_vans_and_amenities
-  #   @vans = Van.order(:make)
-  #   @amenities = Amenity.order(:name)
-  # end
 
 end

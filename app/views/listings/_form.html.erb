@@ -50,6 +50,7 @@
     <%= builder.fields_for :amenities do |a| %>
         <%= a.label :amenities, class: "label" %>
         <%= a.collection_check_boxes :amenity_ids, @amenities, :id, :name %>
+        
     <% end %>
   <% end %>
   
