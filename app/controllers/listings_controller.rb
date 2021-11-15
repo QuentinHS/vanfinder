@@ -18,11 +18,7 @@ class ListingsController < ApplicationController
   def new
     # @listing = current_user.listings.build
     @listing = Listing.new
-    # @listing.van.new
-    # # Create van linked to each new listing
-    # @listing.van.create
-    # @listing = Listing.new
-    # @listing.van.build
+
   end
 
   # GET /listings/1/edit
@@ -32,13 +28,7 @@ class ListingsController < ApplicationController
   # POST /listings or /listings.json
   def create
     @listing = current_user.listings.build(listing_params)
-    # @listing = current_user.listings.new(listing_params)
- 
-    # van_hash = params[:listing][:van]
-    # if van_hash
-    #   @van = Van.create
-    #   @van.seats = van_hash[:seats]
-    # end
+
     respond_to do |format|
       if @listing.save
         current_user.add_role :creator, @listing     
@@ -82,7 +72,7 @@ class ListingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def listing_params
-      params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :seats] )
+      params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :model, :year, :odometer, :fuel_type, :type, :roof_type, :sleeps, :seats, amenities_attributes: [:shower]] )
     end
 
 
