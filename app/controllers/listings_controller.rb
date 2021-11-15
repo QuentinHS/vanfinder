@@ -5,8 +5,6 @@ class ListingsController < ApplicationController
   # Use pundit to check for authorisation
   before_action :check_auth
   
-  skip_before_action :verify_authenticity_token
- 
   
   # GET /listings or /listings.json
   def index
@@ -31,7 +29,7 @@ class ListingsController < ApplicationController
     @listing = current_user.listings.build(listing_params)
     respond_to do |format|
       if @listing.save
-        
+        current_user.add_role :creator, @listing
         format.html { redirect_to @listing, notice: "Listing was successfully created." }
         format.json { render :show, status: :created, location: @listing }
       else

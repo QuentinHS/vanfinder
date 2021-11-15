@@ -24,7 +24,12 @@
                   <h3 class="text-lg text-gray-600 font-semibold mb-2">New York</h3>
                 </div>
                 <p class="text-sm tracking-normal">Częstochowski pomnik Jana Pawła II wyjątkowo interesująco wpisuje się w poprzemysłowy krajobraz tego miasta o mocnych lewicowych, robotniczych i socjalistycznych tradycjach. Powstały w 2013 roku, uchodzi za najwyższego Karola Wojtyłę w Polsce.</p>
-                <%= link_to "Read more", listing, class: "block mt-12 w-full text-center bg-yellow-400 py-2 rounded-lg" %>         
+                <% if user_signed_in? %>
+                  <%= link_to "Read more", listing, class: "block mt-12 w-full text-center bg-yellow-400 py-2 rounded-lg" %> 
+                <% end %>
+                <% if !user_signed_in? %>
+                  <button class="block mt-12 w-full text-center bg-yellow-400 py-2 rounded-lg">Log in to view</button>
+                <% end %>        
               </div>
             </div>
           </div>
