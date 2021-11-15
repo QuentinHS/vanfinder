@@ -11,7 +11,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :listings, dependent: :destroy
-  # has_many :creator_listings, -> { where(roles: {name: :creator}) }, through: :roles, source: :resource, source_type: :Listing
+  
 
   validates_uniqueness_of :username
   validates_presence_of :username

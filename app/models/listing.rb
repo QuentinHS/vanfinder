@@ -3,8 +3,7 @@ class Listing < ApplicationRecord
   belongs_to :user
   has_one :van
   has_one_attached :listing_image, dependent: :purge
-  # belongs_to :creator, -> { where(roles: {name: :creator}) }, through: :roles, class_name: 'User', source: :users
-  # after_create :add_editor_role
+
 
 
 
@@ -15,11 +14,5 @@ class Listing < ApplicationRecord
   validates :city, presence: { message: "Please provide your city or town"}
   validates :state, presence: { message: "Please provide your state"}
  
-
-  private
-
-  # def add_editor_role
-  #   @current_user.add_role :editor, @listing
-  # end 
 
 end
