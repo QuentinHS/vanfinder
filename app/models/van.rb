@@ -4,7 +4,13 @@ class Van < ApplicationRecord
   has_many :amenities, through: :amenity_vans
 
   # accepts_nested_attributes_for :amenities, allow_destroy: true
+
   accepts_nested_attributes_for :amenity_vans, reject_if: :all_blank, allow_destroy: true
+
+
+  
+
+
 
   # before_save :find_or_create_amenities
 

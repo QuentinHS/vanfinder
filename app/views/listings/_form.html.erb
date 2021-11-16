@@ -52,8 +52,7 @@
   <!-- Nested form for many-to-many relationship between vans and amenities -->
     <%= builder.fields_for :amenities do |a| %>
         <%= a.collection_check_boxes :amenity_ids, @amenities, :id, :name  %>
-         
-       
+              
     <% end %>
   <% end %>
   

@@ -3,5 +3,6 @@ class AmenityVan < ApplicationRecord
   belongs_to :amenity
 
 
+
   
 end
