@@ -2,7 +2,6 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: %i[ show edit update destroy ]
   # This throws an exception if the user is not authenticated
   before_action :authenticate_user!, except: %i[ index show ]
-  
   before_action :set_amenities, only: %i[ new edit create ]
 
   # GET /listings or /listings.json
@@ -19,8 +18,8 @@ class ListingsController < ApplicationController
   # GET /listings/new
   def new
     @listing = Listing.new
-    @listing.build_van
- 
+    @listing.build_van.amenities.build
+  
   end
 
   # GET /listings/1/edit
@@ -29,7 +28,6 @@ class ListingsController < ApplicationController
 
   # POST /listings or /listings.json
   def create
-   
     @listing = current_user.listings.build(listing_params)
 
     respond_to do |format|
