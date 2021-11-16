@@ -5,7 +5,7 @@ class ListingsController < ApplicationController
   before_action :set_amenities, only: %i[ new edit create ]
   before_action :set_vans, only: %i[ new edit create ]
   before_action :set_amenity_vans, only: %i[ new edit create ]
-  before_action :process_amenity_vans_attrs, only: [:create, :update]
+  # before_action :process_amenity_vans_attrs, only: [:create, :update]
 
   # GET /listings or /listings.json
   def index
@@ -83,12 +83,10 @@ class ListingsController < ApplicationController
     # Only allow a list of trusted parameters through. Includes parameters for nested forms for Listings, Van and Amenities.
     # def listing_params
 
-    # params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :model, :year, :odometer, :fuel_type, :listing_id, :type, :roof_type, :sleeps, :seats, amenity_ids: [], amenities_attributes: [:id, :name, :_destroy ]] )
-    # end
 
 
     def listing_params
-      params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :model, :year, :odometer, :fuel_type, :listing_id, :type, :roof_type, :sleeps, :seats ] )
+      params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :model, :year, :odometer, :fuel_type, :listing_id, :type, :roof_type, :sleeps, :seats, ammenities_vans_attributes: [:van_id, :amenity_id] ] )
     end
 
     def set_amenities
@@ -103,11 +101,11 @@ class ListingsController < ApplicationController
       @amenity_vans = AmenityVan.all
     end
 
-  def process_amenity_vans_attrs
-    params[:listing][:van_attributes][:amenities_vans_attributes].values.each do |amen_attr|
-      amen_attr[:_destroy] = true if amen_attr[:enable] != '1'
-    end
-  end
+  # def process_amenity_vans_attrs
+  #   params[:listing][:van_attributes][:amenities_vans_attributes].values.each do |amen_attr|
+  #     amen_attr[:_destroy] = true if amen_attr[:enable] != '1'
+  #   end
+  # end
 
 
 end
