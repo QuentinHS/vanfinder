@@ -37,7 +37,7 @@
     <%= form.number_field :price, class: "input" %>
   </div>
 
-  <%= form.fields_for :van, Van.new do |builder| %>
+  <%= form.fields_for :van do |builder| %>
 
   <div class="mb-6">
     <%= builder.label :seats, class: "label" %>

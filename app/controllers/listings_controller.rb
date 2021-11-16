@@ -3,7 +3,7 @@ class ListingsController < ApplicationController
   # This throws an exception if the user is not authenticated
   before_action :authenticate_user!, except: %i[ index show ]
   
-  before_action :set_vans_and_amenities, only: [:new, :edit, :create]
+  before_action :set_amenities, only: %i[ new edit create ]
 
   # GET /listings or /listings.json
   def index
@@ -19,7 +19,7 @@ class ListingsController < ApplicationController
   # GET /listings/new
   def new
     @listing = Listing.new
-    # @listing.build_van.amenities.build
+    @listing.build_van
  
   end
 
@@ -78,9 +78,13 @@ class ListingsController < ApplicationController
       params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :model, :year, :odometer, :fuel_type, :listing_id, :type, :roof_type, :sleeps, :seats, amenity_ids: [], amenities_attributes: [:id, :name ]] )
     end
 
-    def set_vans_and_amenities
-      @vans = Van.order(:make)
-      @amenities = Amenity.order(:name)
+    # def set_vans_and_amenities
+    #   @vans = Van.order(:make)
+    #   @amenities = Amenity.order(:name)
+    # end
+
+    def set_amenities
+      @amenities = Amenity.all
     end
 
 
