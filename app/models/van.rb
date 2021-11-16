@@ -3,8 +3,7 @@ class Van < ApplicationRecord
   has_many :amenity_vans, inverse_of: :amenity, dependent: :destroy
   has_many :amenities, through: :amenity_vans
 
-
-  accepts_nested_attributes_for :amenity_vans, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :amenity_vans, allow_destroy: true
 
   def initialized_amenity_vans # this is the key method
     [].tap do |o|
@@ -18,7 +17,7 @@ class Van < ApplicationRecord
     end
   end
 
-  attr_accessor :enable
+
 
 
 end
