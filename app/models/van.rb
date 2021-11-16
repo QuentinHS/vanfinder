@@ -18,7 +18,7 @@ class Van < ApplicationRecord
     end
   end
 
-  
+  attr_accessor :enable
 
 
 end
