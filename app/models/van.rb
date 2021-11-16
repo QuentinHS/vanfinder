@@ -4,14 +4,6 @@ class Van < ApplicationRecord
   has_many :amenities, through: :amenity_vans
 
   accepts_nested_attributes_for :amenities, allow_destroy: true
-  validate :past_year
-  
-
-  def past_year
-        if year >= Date.today
-            errors.add(:year, "Model year must be in the past")
-        end
-  end
 
 
 

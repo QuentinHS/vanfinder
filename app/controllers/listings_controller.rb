@@ -29,6 +29,7 @@ class ListingsController < ApplicationController
 
   # POST /listings or /listings.json
   def create
+   
     @listing = current_user.listings.build(listing_params)
 
     respond_to do |format|
