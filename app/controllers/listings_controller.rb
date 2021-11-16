@@ -4,6 +4,7 @@ class ListingsController < ApplicationController
   before_action :authenticate_user!, except: %i[ index show ]
   before_action :set_amenities, only: %i[ new edit create ]
 
+
   # GET /listings or /listings.json
   def index
     @listings = Listing.order(created_at: :desc)
@@ -74,6 +75,10 @@ class ListingsController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through. Includes parameters for nested forms for Listings, Van and Amenities.
+    # def listing_params
+    #   params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :model, :year, :odometer, :fuel_type, :listing_id, :type, :roof_type, :sleeps, :seats, amenity_ids: [], amenities_attributes: [:id, :name, :_destroy ]] )
+    # end
+
     def listing_params
       params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :model, :year, :odometer, :fuel_type, :listing_id, :type, :roof_type, :sleeps, :seats, amenity_ids: [], amenities_attributes: [:id, :name, :_destroy ]] )
     end
@@ -81,6 +86,7 @@ class ListingsController < ApplicationController
     def set_amenities
       @amenities = Amenity.order(:name)
     end
+
 
 
 end
