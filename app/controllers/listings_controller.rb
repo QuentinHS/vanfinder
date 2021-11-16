@@ -3,7 +3,9 @@ class ListingsController < ApplicationController
   # This throws an exception if the user is not authenticated
   before_action :authenticate_user!, except: %i[ index show ]
   before_action :set_amenities, only: %i[ new edit create ]
- 
+  before_action :set_vans, only: %i[ new edit create ]
+  before_action :set_amenity_vans, only: %i[ new edit create ]
+  before_action :process_amenity_vans_attrs, only: [:create, :update]
 
   # GET /listings or /listings.json
   def index
@@ -86,12 +88,26 @@ class ListingsController < ApplicationController
 
 
     def listing_params
-      params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :model, :year, :odometer, :fuel_type, :listing_id, :type, :roof_type, :sleeps, :seats, amenities_vans_attributes: [:id, amenity_ids: [] ]] )
+      params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :model, :year, :odometer, :fuel_type, :listing_id, :type, :roof_type, :sleeps, :seats ] )
     end
 
     def set_amenities
       @amenities = Amenity.order(:name)
     end
+
+    def set_vans
+      @vans = Van.all
+    end
+
+    def set_amenity_vans
+      @amenity_vans = AmenityVan.all
+    end
+
+  def process_amenity_vans_attrs
+    params[:listing][:van_attributes][:amenities_vans_attributes].values.each do |amen_attr|
+      amen_attr[:_destroy] = true if amen_attr[:enable] != '1'
+    end
+  end
 
 
 end

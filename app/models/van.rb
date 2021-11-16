@@ -6,15 +6,19 @@ class Van < ApplicationRecord
 
   accepts_nested_attributes_for :amenity_vans, reject_if: :all_blank, allow_destroy: true
 
+  def initialized_amenity_vans # this is the key method
+    [].tap do |o|
+      Amenity.all.each do |amenity|
+        if c = amenity_vans.find { |c| c.amenity_id == amenity.id }
+          o << c.tap { |c| c.enable ||= true }
+        else
+          o << AmenityVan.new(amenity: amenity)
+        end
+      end
+    end
+  end
 
   
-  # before_save :find_or_create_amenities
-
-  # def find_or_create_amenities
-  #   self.amenity_vans.each do |amenity_van|
-  #     amenity_van.amenity = Amenity.find_or_create_by(name: amenity_van.amenity.name)
-  #   end
-  # end
 
 
 end
