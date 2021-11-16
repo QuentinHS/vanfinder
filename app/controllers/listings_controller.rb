@@ -4,6 +4,7 @@ class ListingsController < ApplicationController
   before_action :authenticate_user!, except: %i[ index show ]
   before_action :set_amenities, only: %i[ new edit create ]
   before_action :set_amenity_vans, only: %i[ new edit create ]
+  before_action :set_vans, only: %i[ new edit create ]
 
   # GET /listings or /listings.json
   def index
@@ -29,9 +30,41 @@ class ListingsController < ApplicationController
   def edit
   end
 
+    # Parameters: {"authenticity_token"=>"[FILTERED]", "listing"=>{"listing_image"=>#<ActionDispatch::Http::UploadedFile:0x00007f0b98c7ab78 @tempfile=#<Tempfile:/tmp/RackMultipart20211116-31511-ifytnf.jpg>, @original_filename="van3.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"listing[listing_image]\"; filename=\"van3.jpg\"\r\nContent-Type: image/jpeg\r\n">, "city"=>"sydney", "state"=>"nsw", "price"=>"2221", "van_attributes"=>{"seats"=>"3", "make"=>"mercedes", "amenities"=>{"amenity_ids"=>["", "4", "1", "6", "2", "3", "5"]}}, "description"=>"Another van I like"}, "commit"=>"Create Listing"}
+
   # POST /listings or /listings.json
   def create
-    @listing = current_user.listings.build(listing_params)
+    @listing = current_user.listings.new(listing_params)
+    
+    van_listing_amenities = params[:listing][:van_attributes][:amenities][:amenity_ids]
+    # van_listing_amenities.each do |item|
+    #   puts item
+    #   # if item == 1 || item == 2 || item == 3 || item == 4
+    #   #   @listing.van.amenities.push(Amenity.find(item))
+    #   # end
+    # end
+    
+        
+    van_listing_amenities.each_with_index do |item, index|
+      if index > 1
+        AmenityVan.create(van_id: @listing.id, amenity_id: item )
+      end
+    end 
+
+
+    @listing.save
+    
+    # @listing = current_user.listings.build(listing_params)
+
+    # van_listing_amenities = params[:listing][:van_attributes][:amenities][:amenity_ids]
+    
+    # van_listing_amenities.each do |item|
+    #   @amenity_van = AmenityVan.create {   }
+    #   @amenity_van.van_id = @listing.van.id
+    #   @amenity_van.amenity_id = item
+    #   @amenity_van.save
+    # end 
+
 
     respond_to do |format|
       if @listing.save
@@ -85,7 +118,18 @@ class ListingsController < ApplicationController
     end
 
     def set_amenities
-      @amenities = Amenity.order(:name)
+      @amenities = Amenity.all
+
+    def set_vans
+      @vans = Van.all
+    end
+
+    def van_params
+      params.require(:van).permit(:id, :amenities)
+    end
+
+    def amenity_params
+      params.require(:amenities).permit(:id, :ammenity_name)
     end
 
     def set_amenity_vans
