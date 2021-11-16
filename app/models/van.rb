@@ -1,10 +1,9 @@
 class Van < ApplicationRecord
   belongs_to :listing
-  has_many :amenity_vans, dependent: :destroy
+  has_many :amenity_vans, inverse_of: :amenity, dependent: :destroy
   has_many :amenities, through: :amenity_vans
 
   accepts_nested_attributes_for :amenities, allow_destroy: true
-
 
 
   # before_save :find_or_create_amenities

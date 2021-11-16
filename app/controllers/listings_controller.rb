@@ -17,8 +17,10 @@ class ListingsController < ApplicationController
 
   # GET /listings/new
   def new
+    
     @listing = Listing.new
     @listing.build_van.amenities.build
+    
   
   end
 
@@ -71,18 +73,13 @@ class ListingsController < ApplicationController
       @listing = Listing.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+    # Only allow a list of trusted parameters through. Includes parameters for nested forms for Listings, Van and Amenities.
     def listing_params
-      params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :model, :year, :odometer, :fuel_type, :listing_id, :type, :roof_type, :sleeps, :seats, amenity_ids: [], amenities_attributes: [:id, :name ]] )
+      params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :model, :year, :odometer, :fuel_type, :listing_id, :type, :roof_type, :sleeps, :seats, amenity_ids: [], amenities_attributes: [:id, :name, :_destroy ]] )
     end
 
-    # def set_vans_and_amenities
-    #   @vans = Van.order(:make)
-    #   @amenities = Amenity.order(:name)
-    # end
-
     def set_amenities
-      @amenities = Amenity.all
+      @amenities = Amenity.order(:name)
     end
 
 
