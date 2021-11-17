@@ -22,7 +22,7 @@ class ListingsController < ApplicationController
   def new
     
     @listing = Listing.new
-    @listing.build_van.amenity_vans.build
+     @listing.build_van.amenity_vans.build.build_amenity
 
     # @amenities.each do |amenity|
     #   @listing.van.amenity_vans.build(amenity_id: amenity_id)
