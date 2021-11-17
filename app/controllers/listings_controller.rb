@@ -11,7 +11,7 @@ class ListingsController < ApplicationController
 
     case params[:type]
     when "city"
-        @listings = Listing.where(["city LIKE ?", "%#{params[:query]}%"]).paginate(page: params[:page],per_page:6)   
+        @listings = Listing.where(["city LIKE ?", "%#{params[:query]}%"])     
     when "state"
         @listings = Listing.where(["state LIKE ?", "%#{params[:query]}%"])
     when "make"
