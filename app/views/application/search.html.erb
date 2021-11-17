@@ -1,0 +1,22 @@
+<div class="bg-gray-700 text-white mb-6">
+  <div class="container lg:p-10 p-4">
+    <h1 class="lg:text-3xl text-lg">Results for "<%= params[:q] %>"</h1>
+  </div>
+</div>
+​
+<% if @listing_results.exists? %>
+  <div class="w-full md:w-2/3 m-auto pr-0 md:pr-6 mb-6">
+    <div class="bg-white shadow rounded-sm">
+      <h3 class="uppercase text-sm text-gray-700 tracking-wide font-semibold px-4 pt-2 border-t border-r border-l border-gray-200 rounded-t">Listings</h3>
+      <%= render partial: "listing_result", collection: @listing_results %>
+    </div>
+  </div>
+<% end %>
+​
+<% if @listing_results.empty??%>
+  <div class="w-full md:w-2/3 m-auto pr-0 md:pr-6 mb-6">
+    <div class="bg-white shadow rounded-sm">
+      <p class="text-xl p-6">Your search returned 0 results</p>
+    </div>
+  </div>
+<% end %>

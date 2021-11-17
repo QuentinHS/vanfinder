@@ -21,6 +21,15 @@
           
 
             <!-- Search Bar -->
+
+            <%= form_with url: "/search", method: :get do |form| %>
+              <%= form.label :search_for %>
+              <%= form.text_field :query %>
+              <%= form.submit :go! %>
+            <% end %> 
+
+        
+
             <div class="relative mx-auto text-gray-600  lg:block hidden">
                 <input
                     class="border-2  border-gray-300 bg-white h-10 pl-6 pr-12 rounded-lg text-sm focus:outline-none"
@@ -36,6 +45,8 @@
               </svg>
                 </button>
             </div>
+
+
              <% if !user_signed_in? %>
             <div class="flex ">
               <%= link_to "Login", new_user_session_path, class: "btn btn-outline btn-small mr-2 hidden lg:inline-block border-purple-700" %>

@@ -6,6 +6,21 @@ class ListingsController < ApplicationController
   before_action :set_vans, only: %i[ new edit create ]
   before_action :set_amenity_vans, only: %i[ new edit create ]
   
+  # def search
+  #   @listings = Listing.where("city LIKE ?", "%#{params[:query]}%")
+  #   render "index"
+  # end
+
+
+  
+  def search
+
+    # add search function  
+ 
+      @listings = Listing.where(["city LIKE ?", "%#{params[:query]}%"])
+      render "index"
+  end
+
 
   # GET /listings or /listings.json
   def index
@@ -34,14 +49,8 @@ class ListingsController < ApplicationController
 
   # POST /listings or /listings.json
   def create
-    @listing = current_user.listings.new(listing_params)
+    @listing = current_user.listings.build(listing_params)
 
-    p params[:listing][:van_attributes]
-    p params[:listing][:van_attributes][:amenity_ids]
-  
-
-
-    @listing.save
 
     respond_to do |format|
       if @listing.save
@@ -79,6 +88,8 @@ class ListingsController < ApplicationController
 
 
   private
+
+
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
       @listing = Listing.find(params[:id])
