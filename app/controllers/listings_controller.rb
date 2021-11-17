@@ -3,14 +3,27 @@ class ListingsController < ApplicationController
   # This throws an exception if the user is not authenticated
   before_action :authenticate_user!, except: %i[ index show ]
   before_action :set_amenities, only: %i[ new edit create ]
-  before_action :set_vans, only: %i[ new edit create ]
+  before_action :set_vans, only: %i[ new edit create search ]
   before_action :set_amenity_vans, only: %i[ new edit create ]
   
   # add search function for listing 
   def search
 
-      @listings = Listing.where(["city LIKE ?", "%#{params[:query]}%"])
-      render "index"
+    case params[:type]
+    when "city"
+        @listings = Listing.where(["city LIKE ?", "%#{params[:query]}%"])   
+    when "state"
+        @listings = Listing.where(["state LIKE ?", "%#{params[:query]}%"])
+    when "make"
+         @listings = []
+         vans = Van.where(["make LIKE ?", "%#{params[:query]}%"])
+         vans.each do |van|
+            @listings.push(van.listing)
+         end
+    end
+
+    render "index"
+  
   end
 
 
