@@ -51,8 +51,13 @@
   </div>
   <!-- Nested form for many-to-many relationship between vans and amenities -->
  
-    <%= builder.collection_check_boxes :amenity_ids, @amenities, :id, :name, {class: 'input-checkbox'} %>
-        
+    <!-- <%= builder.collection_check_boxes :amenity_ids, @amenities, :id, :name, wrapper: {class: 'input-checkbox'} %> -->
+
+    <%= builder.collection_check_boxes :amenity_ids, @amenities, :id, :name do |b|  %> 
+       
+        <%= b.check_box class: "my-2" %>
+         <%= b.label %>
+      <% end %>   
   
   <% end %>
   
