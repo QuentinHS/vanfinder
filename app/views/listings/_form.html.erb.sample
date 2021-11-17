@@ -50,10 +50,13 @@
     <%= builder.text_field :make, class: "input" %>
   </div>
   <!-- Nested form for many-to-many relationship between vans and amenities -->
- 
-    <%= builder.collection_check_boxes :amenity_ids, @amenities, :id, :name %>
+    <%= builder.fields_for :amenity_vans, @listing.van.initialized_amenity_vans do |a| %>
         
-  
+    <div class="field">
+     
+      <%= a.check_box :enable %>
+    </div>
+    <% end %>
   <% end %>
   
   <div class="mb-6 text">
