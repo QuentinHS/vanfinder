@@ -11,14 +11,14 @@ class ListingsController < ApplicationController
 
     case params[:type]
     when "city"
-        @listings = Listing.where(["city LIKE ?", "%#{params[:query]}%"])   
+        @listings = Listing.where(["city LIKE ?", "%#{params[:query]}%"]).paginate(page: params[:page],per_page:6)   
     when "state"
         @listings = Listing.where(["state LIKE ?", "%#{params[:query]}%"])
     when "make"
          @listings = []
          vans = Van.where(["make LIKE ?", "%#{params[:query]}%"])
          vans.each do |van|
-            @listings.push(van.listing)
+            @listings << van.listing
          end
     end
 
