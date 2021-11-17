@@ -6,17 +6,10 @@ class ListingsController < ApplicationController
   before_action :set_vans, only: %i[ new edit create ]
   before_action :set_amenity_vans, only: %i[ new edit create ]
   
-  # def search
-  #   @listings = Listing.where("city LIKE ?", "%#{params[:query]}%")
-  #   render "index"
-  # end
+  # add search function  
 
-
-  
   def search
 
-    # add search function  
- 
       @listings = Listing.where(["city LIKE ?", "%#{params[:query]}%"])
       render "index"
   end
