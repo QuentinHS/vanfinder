@@ -5,7 +5,7 @@ class ListingsController < ApplicationController
   before_action :set_amenities, only: %i[ new edit create ]
   before_action :set_vans, only: %i[ new edit create ]
   before_action :set_amenity_vans, only: %i[ new edit create ]
-  # before_action :process_amenity_vans_attrs, only: [:create, :update]
+  
 
   # GET /listings or /listings.json
   def index
@@ -22,11 +22,8 @@ class ListingsController < ApplicationController
   def new
     
     @listing = Listing.new
-     @listing.build_van.amenity_vans.build.build_amenity
+    @listing.build_van.amenity_vans.build.build_amenity
 
-    # @amenities.each do |amenity|
-    #   @listing.van.amenity_vans.build(amenity_id: amenity_id)
-    # end
     
   
   end
@@ -37,7 +34,14 @@ class ListingsController < ApplicationController
 
   # POST /listings or /listings.json
   def create
-    @listing = current_user.listings.build(listing_params)
+    @listing = current_user.listings.new(listing_params)
+
+    p params[:listing][:van_attributes]
+    p params[:listing][:van_attributes][:amenity_ids]
+  
+
+
+    @listing.save
 
     respond_to do |format|
       if @listing.save
@@ -85,7 +89,7 @@ class ListingsController < ApplicationController
 
 
     def listing_params
-      params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :model, :year, :odometer, :fuel_type, :listing_id, :type, :roof_type, :sleeps, :seats, amenities_vans_attributes: [ amenity_attributes: [:name] ]])
+      params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :model, :year, :odometer, :fuel_type, :listing_id, :type, :roof_type, :sleeps, :seats, amenities_vans_attributes: [ :van_id, :user_id, amenity_attributes: [:name] ]])
       
     end
 
@@ -101,11 +105,6 @@ class ListingsController < ApplicationController
       @amenity_vans = AmenityVan.all
     end
 
-  # def process_amenity_vans_attrs
-  #   params[:listing][:van_attributes][:amenities_vans_attributes].values.each do |amen_attr|
-  #     amen_attr[:_destroy] = true if amen_attr[:enable] != '1'
-  #   end
-  # end
 
 
 end
