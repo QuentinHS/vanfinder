@@ -89,7 +89,7 @@ class ListingsController < ApplicationController
 
 
     def listing_params
-      params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :model, :year, :odometer, :fuel_type, :listing_id, :type, :roof_type, :sleeps, :seats, amenities_vans_attributes: [ :van_id, :user_id, amenity_attributes: [:name] ]])
+      params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :model, :year, :odometer, :fuel_type, :listing_id, :type, :roof_type, :sleeps,  :seats, amenity_ids: [], amenities_vans_attributes: [ :van_id, :user_id, amenity_attributes: [:name] ]])
       
     end
 
