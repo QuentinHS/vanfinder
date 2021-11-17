@@ -52,15 +52,20 @@
   <!-- Nested form for many-to-many relationship between vans and amenities -->
  
     <!-- <%= builder.collection_check_boxes :amenity_ids, @amenities, :id, :name, wrapper: {class: 'input-checkbox'} %> -->
-
+  <div class="mb-3">
     <%= builder.collection_check_boxes :amenity_ids, @amenities, :id, :name do |b|  %> 
-       
-        <%= b.check_box class: "my-2" %>
-         <%= b.label %>
+       <div class="flex items-center">
+         <span class="mr-2">
+        <%= b.check_box class: "bg-gray-50 border border-gray-300 focus:ring-3 focus:ring-blue-300 h-5 w-5 rounded" %>
+        </span>
+        <span class="pb-1">
+         <%= b.label class: "text-lg mr-3" %>
+        </span>
+        </div>
       <% end %>   
   
   <% end %>
-  
+  </div>
   <div class="mb-6 text">
     <%= form.label :description, class: "label" %>
     <%= form.text_area :description, class: "input" %>
