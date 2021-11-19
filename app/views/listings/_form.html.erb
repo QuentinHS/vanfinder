@@ -40,15 +40,39 @@
 
   <!-- Nested form for one-to-one relationship between Listing and Van -->
   <%= form.fields_for :van do |builder| %>
-
+  <div class="mb-6">
+    <%= builder.label :make, class: "label" %>
+    <%= builder.text_field :make, class: "input" %>
+  </div>
+  <div class="mb-6">
+    <%= builder.label :model, class: "label" %>
+    <%= builder.text_field :model, class: "input" %>
+  </div>
+  <div class="mb-6">
+    <%= builder.label :year, class: "label" %>
+    <%= builder.number_field :year, class: "input" %>
+  </div>
+  <div class="mb-6">
+    <%= builder.label :roof_type, class: "label" %>
+    <%= builder.text_field :roof_type, class: "input" %>
+  </div>
+  <div class="mb-6">
+    <%= builder.label :odometer, class: "label" %>
+    <%= builder.number_field :odometer, class: "input" %>
+  </div>
+  <div class="mb-6">
+    <%= builder.label :fuel_type, class: "label" %>
+    <%= builder.text_field :fuel_type, class: "input" %>
+  </div>
   <div class="mb-6">
     <%= builder.label :seats, class: "label" %>
     <%= builder.number_field :seats, class: "input" %>
   </div>
   <div class="mb-6">
-    <%= builder.label :make, class: "label" %>
-    <%= builder.text_field :make, class: "input" %>
+    <%= builder.label :sleeps, class: "label" %>
+    <%= builder.number_field :sleeps, class: "input" %>
   </div>
+
   <!-- Nested form for many-to-many relationship between vans and amenities -->
  
     <!-- <%= builder.collection_check_boxes :amenity_ids, @amenities, :id, :name, wrapper: {class: 'input-checkbox'} %> -->
