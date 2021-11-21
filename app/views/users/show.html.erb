@@ -13,7 +13,7 @@
       <div><p class="text-xl mt-2 text-center"><span class="text-gray-500">Email:</span> <%= @user.email %></p></div>
     <% end %>
 
-    <% if @user.phone_number %>
+    <% if @user.phone_number and @user.listings  %>
           <div><p class="text-xl mt-2 text-center"><span class="text-gray-500">Phone:</span> <%= @user.phone_number %></p></div>
     <% end %>
 
