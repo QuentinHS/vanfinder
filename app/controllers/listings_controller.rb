@@ -20,6 +20,18 @@ class ListingsController < ApplicationController
          vans.each do |van|
             @listings << van.listing
          end
+     when "model"
+         @listings = []
+         vans = Van.where(["model LIKE ?", "%#{params[:query]}%"])
+         vans.each do |van|
+            @listings << van.listing
+         end
+     when "type"
+         @listings = []
+         vans = Van.where(["type LIKE ?", "%#{params[:query]}%"])
+         vans.each do |van|
+            @listings << van.listing
+         end
     end
 
     render "index"
