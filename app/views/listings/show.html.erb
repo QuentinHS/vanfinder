@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<section class="antialiased bg-green-700 font-sans">
+<section class="antialiased bg-blue-200 font-sans">
     <div class="max-w-6xl mx-auto">
-        <div class="flex items-center justify-center min-h-screen bg-blue-700 ">
-            <div class=" w-full sm:w-2/3 lg:w-2/3 py-6 px-3 bg-red-700">
+        <div class="flex items-center justify-center min-h-screen bg-blue-200 ">
+            <div class=" w-full sm:w-2/3 lg:w-2/3 py-6 px-3 bg-white">
                 <div class="bg-white shadow-xl rounded-lg overflow-hidden">
                      <%= image_tag @listing.listing_image %>
                         <div class="flex justify-end">
@@ -99,15 +99,15 @@
                         <% end %>
                         </ul>           
                     </div>
-                    <%= link_to '<< Back to listings', listings_path, class: "text-gray-200 inline-block center btn btn-outline my-4" %>
+                    <%= link_to '<< Back to listings', listings_path, class: "text-gray-900 inline-block center btn btn-outline my-4" %>
                     <div class="flex items-center justify-between mt-2">
                         <div>
-                            <%= link_to 'Contact Seller', profile_path, class: "bold text-xl px-9 center btn bg-purple-700 text-blue-200 mb-3" %> 
+                            <%= link_to 'Contact Seller', profile_path, class: "bold text-xl px-9 center btn bg-yellow-400 text-gray-900 mb-3" %> 
                         </div>                 
                     <% if policy(@listing).update? %>
                         <div>
-                        <%= link_to 'Edit', edit_listing_path(@listing),  class: "bold text-xl center btn btn-outline bg-purple-700 text-blue-200" %>
-                        <%= link_to 'Delete', @listing, method: :delete, data: { confirm: "Are you sure that you want to delete this listing? "}, class: "bold text-xl center btn btn-outline bg-purple-700 text-blue-200" %>                       
+                        <%= link_to 'Edit', edit_listing_path(@listing),  class: "bold text-xl center btn btn-outline bg-yellow-400 text-gray-900" %>
+                        <%= link_to 'Delete', @listing, method: :delete, data: { confirm: "Are you sure that you want to delete this listing? "}, class: "bold text-xl center btn btn-outline bg-yellow-400 text-gray-900" %>                       
                         </div>
                     <% end %>
                     </div>
