@@ -16,24 +16,11 @@
 <div class="p-4 text-center">
   <h4><%= @user.username %></h4>
     <div class="italic text-sm text-gray-600">Joined <%= time_ago_in_words(@user.created_at) %> ago</div>
-    <% if @user.listings %>
-      <div><p class="text-xl mt-2 text-center"><span class="text-gray-500">Email:</span> <%= @user.email %></p></div>
-    <% end %>
-
-    <% if @user.phone_number and @user.listings  %>
-          <div><p class="text-xl mt-2 text-center"><span class="text-gray-500">Phone:</span> <%= @user.phone_number %></p></div>
-    <% end %>
 
     <% if user_signed_in? %>
-      <%= link_to "Create Listing", new_listing_path, class: "btn btn-yellow btn-lg inline-block my-2 mt-5" %>
+      <%= link_to "Check messages", messages_path, class: "btn btn-yellow btn-lg inline-block my-2 mt-5" %>
     <% else %>
       <%= link_to "Login", new_user_session_path, class: "btn btn-white btn-small w-full block my-2" %>
       <%= link_to "Sign Up", new_user_session_path, class: "btn btn-yellow btn-small w-full block my-2" %>
-    <% end %>
-  </div>
-  <div>
-    <h3>Messages</h3>
-    <% @user.messages.each do |message| %>
-      <p><%= message.content %></p>
     <% end %>
   </div>

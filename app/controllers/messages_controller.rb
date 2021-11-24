@@ -9,6 +9,13 @@ class MessagesController < ApplicationController
       @message = current_user.sent_messages.new message_params
       @message.recipient_id = @recipient.id
       @message.save
+      if @message.save
+        flash[:notice] = "Your message has been sent!"
+        redirect_to root_path
+      else
+        flash[:alert] = "Please try again."
+        redirect_to root_path
+      end
    end
 
    def index

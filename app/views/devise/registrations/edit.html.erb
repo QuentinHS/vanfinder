@@ -16,11 +16,6 @@
     </div>
 
     <div class="input-group">
-      <%= f.label :phone_number, class:"label" %>
-      <%= f.number_field :phone_number, autocomplete: "email", class:"input" %>
-    </div>
-
-    <div class="input-group">
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>

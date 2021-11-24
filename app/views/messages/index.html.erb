@@ -1,4 +1,16 @@
 <h2>Inbox</h2>
+<div>
 <% @messages.each do |message| %>
-   <%= message.content %>
+  <div class="flex flex-col border border-grey-200">
+    <div class="mb-10">
+    <p><%= message.content %></p>
+    <p><%= User.find(message.sender_id).username %></p>
+  
+    </div>
+    <div >
+    <%= link_to 'Reply', new_user_message_path(message.sender_id), class: "bold inline-block text-xl px-9 center btn bg-yellow-400 text-gray-900 mb-10 " %>
+    </div>
+  </div>
+   
 <% end %>
+</div>
