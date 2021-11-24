@@ -1,4 +1,11 @@
-<%= form_for [@recipient, @user] do |f| %>
-     <%= f.text_field :content %>
-     <%= f.submit %>
+<h1>Create Message</h1>
+
+<%= form_for [@recipient, @message] do |f| %>
+
+    <%= f.hidden_field :recipient_id, value: @recipient.id %>
+
+    <%= f.label "Enter your message below" %><br />
+    <%= f.text_area :content %>
+
+    <%= f.submit "Send" %>
 <% end %>
