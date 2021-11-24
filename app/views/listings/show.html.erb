@@ -102,7 +102,7 @@
                     <%= link_to '<< Back to listings', listings_path, class: "text-gray-900 inline-block center btn btn-outline my-4" %>
                     <div class="flex items-center justify-between mt-2">
                         <div>
-                            <%= link_to 'Contact Seller', profile_path, class: "bold text-xl px-9 center btn bg-yellow-400 text-gray-900 mb-3" %> 
+                        <%= link_to 'Contact Seller', new_user_message_path(@listing.user), class: "bold text-xl px-9 center btn bg-yellow-400 text-gray-900 mb-3" %> 
                         </div>                 
                     <% if policy(@listing).update? %>
                         <div>
