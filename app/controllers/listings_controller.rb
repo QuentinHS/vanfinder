@@ -28,7 +28,7 @@ class ListingsController < ApplicationController
          end
      when "type"
          @listings = []
-         vans = Van.where(["type LIKE ?", "%#{params[:query]}%"])
+         vans = Van.where(["vehicle_type LIKE ?", "%#{params[:query]}%"])
          vans.each do |van|
             @listings << van.listing
          end
@@ -117,7 +117,7 @@ class ListingsController < ApplicationController
 
 
     def listing_params
-      params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :model, :year, :odometer, :fuel_type, :listing_id, :type, :roof_type, :sleeps,  :seats, amenity_ids: [], amenities_vans_attributes: [ :van_id, :user_id, amenity_attributes: [:name] ]])
+      params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :model, :year, :odometer, :fuel_type, :listing_id, :vehicle_type, :roof_type, :sleeps,  :seats, amenity_ids: [], amenities_vans_attributes: [ :van_id, :user_id, amenity_attributes: [:name] ]])
       
     end
 

@@ -16,6 +16,7 @@
             <div>
               <%= cl_image_tag listing.listing_image.key, crop: :scale, width: 350, height: 250, cloud_name: ENV['CLOUDINARY_CLOUD_NAME'] if listing.listing_image.attached? %>
               <div class="px-4 py-2">
+                <h1 class="text-xl text-yellow-600 font-bold mb-1">For Sale: </h1>
                 <h1 class="text-xl font-gray-700 font-bold"><%= number_to_currency(listing.price, precision: 0) %></h1>
                 <div class="flex space-x-2 mt-2">
                   <span>
@@ -26,9 +27,8 @@
                   </span>
                   <h3 class="text-lg text-gray-600 font-semibold mb-2"><%= listing.city %>, <%= listing.state %></h3>
                 </div>
-                <p class="text-sm tracking-normal"><%= listing.van.make %> <%= listing.van.model %></p>
-              
-               
+                <p class="text-sm tracking-normal"><%= listing.van.year%> <%= listing.van.make %> <%= listing.van.model %> <%= listing.van.vehicle_type %></p>
+             
                 <% if user_signed_in? %>
                   <%= link_to "Read more", listing, class: "block mt-12 w-full text-center bg-yellow-400 py-2 rounded-lg text-gray-900" %> 
                 <% end %>
