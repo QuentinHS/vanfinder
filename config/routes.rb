@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show], as: "profile" 
 
   resources :users do
-   get :profile
-  resources :messages, only: [:new, :create] #-> domain.com/users/:user_id/messages/new
-   end
+    # :profile
+    resources :messages, only: [:new, :create] #-> domain.com/users/:user_id/messages/new
+  end
    
    resources :messages, only: [:index, :show, :destroy] #-> domain.com/messages/:id
 
