@@ -26,7 +26,7 @@ class ListingsController < ApplicationController
          vans.each do |van|
             @listings << van.listing
          end
-     when "type"
+     when "vehicle type"
          @listings = []
          vans = Van.where(["vehicle_type LIKE ?", "%#{params[:query]}%"])
          vans.each do |van|
