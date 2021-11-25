@@ -18,10 +18,10 @@
     <div class="italic text-sm text-gray-600">Joined <%= time_ago_in_words(@user.created_at) %> ago</div>
     <div>
     <% if user_signed_in? %>
-      
-      
-       <%= link_to '<< Back to listings', root_path, class: "text-gray-900 inline-block center btn btn-outline my-4" %>
+      <%= link_to '<< Back to listings', root_path, class: "text-gray-900 inline-block center btn btn-outline my-4" %>
+      <% if current_user == @user %>
       <%= link_to "Check messages", messages_path, class: "btn btn-yellow btn-lg inline-block my-2 mt-5" %>
+      <% end %>
     </div>
     <div>
       <p>You have <span class="font-bold"><%= @user.messages.count %> </span>messages</p>
