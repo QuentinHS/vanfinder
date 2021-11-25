@@ -43,9 +43,9 @@ class ListingsController < ApplicationController
   end
 
 
-  # GET /listings or /listings.json
+  # GET /listings or /listings.json and add eager loading
   def index
-    @listings = Listing.order(created_at: :desc)
+    @listings = Listing.includes(:user, :van).order(created_at: :desc)
   end
 
   # GET /listings/1 or /listings/1.json
@@ -114,7 +114,7 @@ class ListingsController < ApplicationController
 
     # Set listing for required methods
     def set_listing
-      @listing = Listing.find(params[:id])
+      @listing = Listing.includes(:user, :van).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through. Includes additional parameters for nested forms for Listings, Van and Amenities.
