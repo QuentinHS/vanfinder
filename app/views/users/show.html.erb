@@ -23,6 +23,12 @@
        <%= link_to '<< Back to listings', root_path, class: "text-gray-900 inline-block center btn btn-outline my-4" %>
       <%= link_to "Check messages", messages_path, class: "btn btn-yellow btn-lg inline-block my-2 mt-5" %>
     </div>
+    <div>
+      <p>You have <span class="font-bold"><%= @user.messages.count %> </span>messages</p>
+      <% if !@user.messages.empty? %>
+      <p>Your last message was received <%= time_ago_in_words(@user.messages.last.created_at) %> ago</p>
+      <% end %>
+    </div>
     <% else %>
       <%= link_to "Login", new_user_session_path, class: "btn btn-white btn-small w-full my-2" %>
       <%= link_to "Sign Up", new_user_session_path, class: "btn btn-yellow btn-small w-full my-2" %>
