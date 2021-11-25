@@ -7,7 +7,7 @@
     <div class="flex mt-2">
       <!-- display thumnail of each user listing -->
     <% @user.listings.each do |listing| %>
-          
+          <!-- turn each thumbnail into link for listing show method -->
           <%= link_to image_tag(listing.listing_image, width: 150, class: "mr-2"), listing %>
           
     <% end %>

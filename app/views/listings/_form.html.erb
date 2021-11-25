@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+    <!-- Formated upload button with svg icon -->
   <div class="image_video">
     <div class="my-6">
       <%= form.label :van_image, class: "label " %>
@@ -79,7 +79,6 @@
 
   <!-- Nested form for many-to-many relationship between vans and amenities -->
  
-    <!-- <%= builder.collection_check_boxes :amenity_ids, @amenities, :id, :name, wrapper: {class: 'input-checkbox'} %> -->
   <div class="mb-3">
     <%= builder.collection_check_boxes :amenity_ids, @amenities, :id, :name do |b|  %> 
        <div class="flex items-center">

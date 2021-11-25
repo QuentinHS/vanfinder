@@ -5,7 +5,8 @@
         <div class="flex items-center justify-center min-h-screen bg-blue-200 ">
             <div class=" w-full sm:w-2/3 lg:w-2/3 py-6 px-3 bg-white">
                 <div class="bg-white shadow-xl rounded-lg overflow-hidden">
-                     <%= image_tag @listing.listing_image %>
+                     <!--display listing image  -->
+                    <%= image_tag @listing.listing_image %>
                         <div class="flex justify-end">
                             <svg class="h-6 w-6 text-white fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path d="M12.76 3.76a6 6 0 0 1 8.48 8.48l-8.53 8.54a1 1 0 0 1-1.42 0l-8.53-8.54a6 6 0 0 1 8.48-8.48l.76.75.76-.75zm7.07 7.07a4 4 0 1 0-5.66-5.66l-1.46 1.47a1 1 0 0 1-1.42 0L9.83 5.17a4 4 0 1 0-5.66 5.66L12 18.66l7.83-7.83z"></path>
@@ -13,7 +14,7 @@
                         </div>
                     </div>
                     <div class="p-4 ">
-        
+                        <!-- Formatted currency -->
                         <p class="text-3xl text-gray-900"><%= number_to_currency(@listing.price, precision: 0) %></p>
                         <div class="flex space-x-2 mt-2">
                         <span>
@@ -26,6 +27,7 @@
                          <p class="uppercase tracking-wide text-sm font-bold text-gray-700 mt-2 mb-1">Sellers Description</p>
                          <p><%= @listing.description %></p>
                     </div>
+                    <!-- Svg for bed icon -->
                     <div class="flex p-4 border-t border-gray-300 text-gray-700">
                         <div class="flex-1 inline-flex items-center">
                             <svg class="h-6 w-6 text-gray-600 fill-current mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -33,7 +35,7 @@
                             </svg>
                             <p>Sleeps<span class="text-gray-900 font-bold"> <%= @listing.van.sleeps %></span></p>
                         </div>
-                        
+                        <!-- Svg for seat icon -->
                         <div class="flex-1 inline-flex items-center">
                             <svg class="h-6 w-6 text-gray-600 fill-current mr-3" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 240.235 240.235" style="enable-background:new 0 0 240.235 240.235;" xml:space="preserve">
@@ -94,6 +96,7 @@
                     <div class="mb-1">
                         <p class="uppercase tracking-wide text-sm font-bold text-gray-700">Amenities</p>
                         <ul>
+                            <!-- Display each van amenity with checkbox -->
                         <% @listing.van.amenities.each do |amenity| %>
                             
                             <li><%= amenity.name %></li>
@@ -104,10 +107,12 @@
                     <div class="flex items-center justify-between mt-2">
                         <% if !policy(@listing).update? %>
                         <div>     
+                            <!-- Ability to message user if user is not creator of listing -->
                         <%= link_to "Contact #{@listing.user.username}", new_user_message_path(@listing.user), class: "bold text-xl px-11 center btn bg-yellow-400 text-gray-900 mb-3 hover:bg-yellow-500" %> 
 
                         </div> 
-                        <% end %>                
+                        <% end %>      
+                                  <!-- Show edit and delete buttons if user is creator of listing  -->
                     <% if policy(@listing).update? %>
                         <div>
                         <%= link_to 'Edit', edit_listing_path(@listing),  class: "bold text-xl center btn btn-outline bg-yellow-400 text-gray-900" %>

@@ -5,10 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+# Destroy listings and amenities before seeding
 Listing.destroy_all
 Amenity.destroy_all
-
+# Seed amenities to database
 amenities = [
     Amenity.create!(name: "shower"),
     Amenity.create!(name: "air conditioning"),

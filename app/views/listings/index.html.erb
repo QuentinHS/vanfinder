@@ -14,12 +14,15 @@
         <div>
           <div class="shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105">
             <div>
+              <!-- Add cloudinary image for each listing, specify width and height -->
               <%= cl_image_tag listing.listing_image.key, crop: :scale, width: 350, height: 320, cloud_name: ENV['CLOUDINARY_CLOUD_NAME'] if listing.listing_image.attached? %>
               <div class="px-4 py-2">
                 <h1 class="text-xl text-yellow-600 font-bold mb-1">For Sale: </h1>
+                <!-- Format currency of price -->
                 <h1 class="text-xl font-gray-700 font-bold"><%= number_to_currency(listing.price, precision: 0) %></h1>
                 <div class="flex space-x-2 mt-2">
                   <span>
+                    <!-- Add svg for location icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -28,7 +31,7 @@
                   <h3 class="text-lg text-gray-600 font-semibold mb-2"><%= listing.city %>, <%= listing.state %></h3>
                 </div>
                 <p class="text- tracking-normal mt-1"><%= listing.van.year%> <%= listing.van.make %> <%= listing.van.model %> <%= listing.van.vehicle_type %></p>
-             
+                <!-- Allow user to see show listing method if user is signed in -->
                 <% if user_signed_in? %>
                   <%= link_to "Read more", listing, class: "block mt-12 w-full text-center bg-yellow-400 py-2 rounded-lg text-gray-900" %> 
                 <% end %>
