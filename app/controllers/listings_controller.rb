@@ -6,7 +6,7 @@ class ListingsController < ApplicationController
   before_action :set_vans, only: %i[ new edit create search ]
   before_action :set_amenity_vans, only: %i[ new edit create ]
   
-  # add search function for listing 
+  # add search function for listings, searching by both listing and van attributes 
   def search
 
     case params[:type]
@@ -112,9 +112,8 @@ class ListingsController < ApplicationController
       @listing = Listing.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through. Includes parameters for nested forms for Listings, Van and Amenities.
+    # Only allow a list of trusted parameters through. Includes additional parameters for nested forms for Listings, Van and Amenities.
     # def listing_params
-
 
     def listing_params
       params.require(:listing).permit(:city, :state, :sold, :description, :user_id, :price, :listing_image, van_attributes: [:make, :model, :year, :odometer, :fuel_type, :listing_id, :vehicle_type, :roof_type, :sleeps,  :seats, amenity_ids: [], amenities_vans_attributes: [ :van_id, :user_id, amenity_attributes: [:name] ]])

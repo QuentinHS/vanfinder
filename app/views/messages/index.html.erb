@@ -1,5 +1,7 @@
+<!-- Inbox page for user messages -->
 <h2 class="text-2xl font-bold my-2">Inbox</h2>
 <div>
+  <!-- display each message in turn -->
 <% @messages.each do |message| %>
   <div class="flex flex-col border-4 border-grey-600 pt-2 pl-3 rounded mb-3">
     <div class="mb-10">
@@ -8,6 +10,7 @@
      <div class="italic text-sm text-gray-600 pt-1">Sent <%= time_ago_in_words(message.created_at) %> ago</div>
   
     </div>
+    <!-- Create button for user to reply to a message -->
     <div>
     <%= link_to 'Reply', new_user_message_path(message.sender_id), class: "bold inline-block text-xl px-9 center btn bg-yellow-400 text-gray-900 mb-8 hover:bg-yellow-500 " %>
     </div>
@@ -15,6 +18,7 @@
    
 <% end %>
 </div>
+<!-- Allow user to return to their profile -->
 <div>
     <%= link_to '<< Back to profile', profile_path(current_user), class: "text-gray-900 inline-block center btn btn-outline my-4" %>
 </div>

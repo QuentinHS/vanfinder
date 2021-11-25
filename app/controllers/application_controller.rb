@@ -1,10 +1,15 @@
 class ApplicationController < ActionController::Base
  
+  # Default rails method to prevent cross-site request forgery
   protect_from_forgery with: :exception
+  
+  # Default and custom devise parameters
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  # Add pundit to application
   include Pundit
 
+  # custom error for Pundit policy violations
   rescue_from Pundit::NotAuthorizedError, with: :forbidden
 
 
@@ -17,6 +22,8 @@ class ApplicationController < ActionController::Base
     end
   
   private
+
+  # Create alert for unauthorised activities
 
   def forbidden
       flash[:alert] = "You are not authorised to perform that action!"

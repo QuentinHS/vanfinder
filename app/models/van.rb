@@ -6,7 +6,9 @@ class Van < ApplicationRecord
   accepts_nested_attributes_for :amenity_vans
 
 
-
+  validates :make, presence: { message: "Please provide the make for this listing"}
+  validates :model, presence: { message: "Please provide the model for this listing"}
+  validates :year, presence: { message: "Please provide the year for this listing"}
 
 
 end

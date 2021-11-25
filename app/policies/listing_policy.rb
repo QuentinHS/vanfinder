@@ -24,7 +24,7 @@ class ListingPolicy
   def new?
     create?
   end
-  
+  # Give update permission if the user is an admin or is the creator of a given listing
   def update?
     user.has_role? :creator, @listing or user.has_role? :admin
   end
@@ -32,7 +32,7 @@ class ListingPolicy
   def edit?
     update?
   end
-
+  # Give destroy permission on same condition as update
   def destroy?
     update?
   end
