@@ -1,14 +1,14 @@
-<h2>Inbox</h2>
+<h2 class="text-2xl font-bold my-2">Inbox</h2>
 <div>
 <% @messages.each do |message| %>
-  <div class="flex flex-col border border-grey-200">
+  <div class="flex flex-col border-4 border-grey-600 pt-2 pl-3 rounded mb-3">
     <div class="mb-10">
-    <p><%= message.content %></p>
-    <p><%= User.find(message.sender_id).username %></p>
+    <p class="text-xl"><%= message.content %></p>
+    <p class="mt-2 ">From: <span class="italic"><%= User.find(message.sender_id).username %></span></p>
   
     </div>
     <div >
-    <%= link_to 'Reply', new_user_message_path(message.sender_id), class: "bold inline-block text-xl px-9 center btn bg-yellow-400 text-gray-900 mb-10 " %>
+    <%= link_to 'Reply', new_user_message_path(message.sender_id), class: "bold inline-block text-xl px-9 center btn bg-yellow-400 text-gray-900 mb-8 hover:bg-yellow-500 " %>
     </div>
   </div>
    
