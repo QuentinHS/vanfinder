@@ -1,11 +1,16 @@
 <h1 class="text-xl my-2">Create Message</h1>
 
+<div >
 <%= form_for [@recipient, @message] do |f| %>
 
     <%= f.hidden_field :recipient_id, value: @recipient.id %>
 
     <%= f.label "Enter your message below", class: "label" %><br />
     <%= f.text_area :content, class: "input" %>
-
-    <%= f.submit "Send", class: "btn btn-yellow mt-4" %> 
+ 
+    <div>
+    <%= link_to '<< Back to profile', profile_path(current_user), class: "text-gray-900 inline-block center btn btn-outline my-4 mr-1" %>
+    <%= f.submit "Send", class: "btn btn-yellow inline-block mt-4 py-3.5 px-9 " %> 
+    </div>
 <% end %>
+</div>
