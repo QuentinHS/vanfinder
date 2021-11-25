@@ -1,11 +1,11 @@
-<h1>Create Message</h1>
+<h1 class="text-xl my-2">Create Message</h1>
 
 <%= form_for [@recipient, @message] do |f| %>
 
     <%= f.hidden_field :recipient_id, value: @recipient.id %>
 
-    <%= f.label "Enter your message below" %><br />
-    <%= f.text_area :content %>
+    <%= f.label "Enter your message below", class: "label" %><br />
+    <%= f.text_area :content, class: "input" %>
 
-    <%= f.submit "Send" %>
+    <%= f.submit "Send", class: "btn btn-yellow mt-4" %> 
 <% end %>
