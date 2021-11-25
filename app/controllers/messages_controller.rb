@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
    end
 
    def index
-      @messages = current_user.messages
+      @messages = current_user.messages.order(created_at: :desc)
    end
 
    def destroy
