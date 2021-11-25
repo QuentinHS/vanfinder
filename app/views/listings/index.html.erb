@@ -15,7 +15,9 @@
           <div class="shadow-lg hover:shadow-xl transform transition duration-500 hover:scale-105">
             <div>
               <!-- Add cloudinary image for each listing, specify width and height -->
-              <%= cl_image_tag listing.listing_image.key, crop: :scale, width: 350, height: 320, cloud_name: ENV['CLOUDINARY_CLOUD_NAME'] if listing.listing_image.attached? %>
+              <div>
+                <%= cl_image_tag listing.listing_image.key, crop: :scale, class: "w-full, h-full, object-contain", cloud_name: ENV['CLOUDINARY_CLOUD_NAME'] if listing.listing_image.attached? %>
+              </div>
               <div class="px-4 py-2">
                 <h1 class="text-xl text-yellow-600 font-bold mb-1">For Sale: </h1>
                 <!-- Format currency of price -->
