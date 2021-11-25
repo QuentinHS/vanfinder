@@ -1,31 +1,35 @@
 class ListingsController < ApplicationController
+  # Set listing for required methods
   before_action :set_listing, only: %i[ show edit update destroy ]
   # This throws an exception if the user is not authenticated
   before_action :authenticate_user!, except: %i[ index show ]
   before_action :set_amenities, only: %i[ new edit create ]
-  before_action :set_vans, only: %i[ new edit create search ]
-  before_action :set_amenity_vans, only: %i[ new edit create ]
   
   # add search function for listings, searching by both listing and van attributes 
   def search
 
     case params[:type]
+      # Search by listing city
     when "city"
         @listings = Listing.where(["city LIKE ?", "%#{params[:query]}%"])     
+      # search by listing state 
     when "state"
         @listings = Listing.where(["state LIKE ?", "%#{params[:query]}%"])
+      # search by van make 
     when "make"
          @listings = []
          vans = Van.where(["make LIKE ?", "%#{params[:query]}%"])
          vans.each do |van|
             @listings << van.listing
          end
+      # search by van model
      when "model"
          @listings = []
          vans = Van.where(["model LIKE ?", "%#{params[:query]}%"])
          vans.each do |van|
             @listings << van.listing
          end
+      # search by van vehicle type
      when "vehicle type"
          @listings = []
          vans = Van.where(["vehicle_type LIKE ?", "%#{params[:query]}%"])
@@ -33,7 +37,7 @@ class ListingsController < ApplicationController
             @listings << van.listing
          end
     end
-
+    # render index with searched results
     render "index"
   
   end
@@ -71,6 +75,7 @@ class ListingsController < ApplicationController
 
     respond_to do |format|
       if @listing.save
+        # give creator role to listing creator
         current_user.add_role :creator, @listing     
         format.html { redirect_to @listing, notice: "Listing was successfully created." }
         format.json { render :show, status: :created, location: @listing }
@@ -107,7 +112,7 @@ class ListingsController < ApplicationController
   private
 
 
-    # Use callbacks to share common setup or constraints between actions.
+    # Set listing for required methods
     def set_listing
       @listing = Listing.find(params[:id])
     end
@@ -120,18 +125,10 @@ class ListingsController < ApplicationController
       
     end
 
+    # set amenities for required methods
     def set_amenities
       @amenities = Amenity.order(:name)
     end
-
-    def set_vans
-      @vans = Van.all
-    end
-
-    def set_amenity_vans
-      @amenity_vans = AmenityVan.all
-    end
-
 
 
 end
