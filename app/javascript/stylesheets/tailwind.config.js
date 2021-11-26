@@ -1,5 +1,6 @@
 module.exports = {
   purge: [
+    // purge tailwind elements that the application does not use
     './app/**/*.html.erb',
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',

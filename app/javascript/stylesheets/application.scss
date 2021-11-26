@@ -1,16 +1,15 @@
 @tailwind base;
 @tailwind components;
 
+// import custom tailwind components
 @import "components/alerts";
 @import "components/animation";
 @import "components/base";
 @import "components/icons";
 @import "components/buttons";
-@import "components/cards";
 @import "components/forms";
-@import "components/modal";
 @import "components/navigation";
 @import "components/listings";
-@import "components/tabs";
+
 
 @tailwind utilities;

@@ -16,7 +16,7 @@
             <div>
               <!-- Add cloudinary image for each listing, specify width and height -->
               <div>
-                <%= cl_image_tag listing.listing_image.key, crop: :scale, class: "w-full, h-full, object-contain", cloud_name: ENV['CLOUDINARY_CLOUD_NAME'] if listing.listing_image.attached? %>
+                <%= cl_image_tag listing.listing_image.key, crop: :scale, class: "w-full,object-contain", cloud_name: ENV['CLOUDINARY_CLOUD_NAME'] if listing.listing_image.attached? %>
               </div>
               <div class="px-4 py-2">
                 <h1 class="text-xl text-yellow-600 font-bold mb-1">For Sale: </h1>

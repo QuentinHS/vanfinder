@@ -112,7 +112,7 @@ class ListingsController < ApplicationController
   private
 
 
-    # Set listing for required methods
+    # Set listing for required methods, utilising eager loading
     def set_listing
       @listing = Listing.includes(:user, :van).find(params[:id])
     end

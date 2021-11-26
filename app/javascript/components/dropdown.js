@@ -1,3 +1,5 @@
+// Dropdown javascript menu for navigation bar
+
 document.addEventListener("turbolinks:load", () => {
   function dropdown() {
     const dropDownLinks = document.querySelectorAll(".js-nav .dropdown a");
